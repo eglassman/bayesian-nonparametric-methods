@@ -38,7 +38,18 @@ print feature_vectors
 print 'solutions with each variable',feature_vectors.sum(axis=0,dtype='int')
 print 'variables in each solution',feature_vectors.sum(axis=1,dtype='int')
 
+from sklearn.decomposition import PCA
 
+pca = PCA(n_components=2)
+projection = pca.fit_transform(feature_vectors)
+print projection
+print 'pca.explained_variance_ratio_',pca.explained_variance_ratio_
+
+import matplotlib.pyplot as plt 
+
+plt.figure()
+plt.scatter(projection[:, 0], projection[:, 1])
+plt.show()
 
 #IDEA: find smaller variable space, where similar variables are represented by similar vectors?
 #Maybe... the vector space could be values taken on by the variable?
