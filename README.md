@@ -9,4 +9,5 @@
 + https://github.com/jacobeisenstein/DPMM
 
 ##Particularly good explanations to reference:
-+http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf
++ http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf
++ https://people.cs.umass.edu/~mccallum/courses/gm2011/21-dirichletprocess.pdf
