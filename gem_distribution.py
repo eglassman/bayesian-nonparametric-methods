@@ -1,3 +1,9 @@
+# The following code uses variable names from Section 4.1 of 
+# Hierarchical Dirichlet Processes by Yee Whye Teh, Jordan, Beal, & Blei
+# http://www.cs.berkeley.edu/~jordan/papers/hdp.pdf
+
+
+
 #GENERATE TRUNCATED GEM DISTRIBUTION
 
 import numpy
