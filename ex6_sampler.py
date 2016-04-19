@@ -192,5 +192,22 @@ def run_gibbs(data,sd,sd_prior,initz,alpha):
             # for the "new" cluster
             log_weights[number_of_clusters+1] = np.log(alpha) + dmvnorm(data[n,:],mu0,Sig0 + Sig)
 
+            # transform unnormalized log probabilities
+            # into probabilities
+            max_weight = np.max(log_weights)
+            log_weights = log_weights - max_weight
+            loc_probs = np.exp(log_weights)
+            loc_probs = loc_probs / np.sum(loc_probs)
 
-
+            # sample which cluster this point should belong to
+            newz = np.random.choice(range(1,(number_of_clusters+1)), replace=TRUE, p=loc_probs)
+            # if necessary, instantiate a new cluster
+            if newz == (number_of_clusters + 1):
+                cluster_counts.append(0)
+                number_of_clusters = number_of_clusters + 1
+            }
+            z[n] = newz
+            # update the cluster counts
+            cluster_counts[newz] = cluster_counts[newz] + 1
+        if iteration >= minPauseIter:
+            print 'another iteration down!, should probably print/plot some things'
