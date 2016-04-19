@@ -118,7 +118,7 @@ def dmvnorm(x,loc,cov):
 #       as parameters.
 def run_gibbs(data,sd,sd_prior,initz,alpha):
     # don't exceed this many Gibbs iterations
-    maxIters = 1000
+    maxIters = 100
 
     # the algorithm will pause and plot after this
     # iteration number; 0 ensures it will plot right off
@@ -210,4 +210,22 @@ def run_gibbs(data,sd,sd_prior,initz,alpha):
             # update the cluster counts
             cluster_counts[newz] = cluster_counts[newz] + 1
         if iteration >= minPauseIter:
-            print 'another iteration down!, should probably print/plot some things'
+            print 'another iteration down!'
+            print iteration
+            print z
+            print loc_probs
+
+
+def testing_gibbs():
+    data = np.array([
+        [ 1.2012183,  1.841496],
+        [ 5.5226047,  1.127076],
+        [-4.2006260, -2.338031],
+        [-0.9778674, -3.855110],
+        [ 3.5464247,  3.438686],
+        [ 2.7436947, -2.430758],
+        [ 4.3244427,  2.625763],
+        [ 2.6464790, -2.468934],
+        [-4.1494230,  3.319551],
+        [ 2.7153451,  3.011679]])
+    print data
