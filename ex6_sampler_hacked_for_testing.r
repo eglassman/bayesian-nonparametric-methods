@@ -87,7 +87,7 @@ ex6_crp_gibbs <- function(data, sd, initz) {
         )
 	
 	# don't exceed this many Gibbs iterations
-	maxIters = 20
+	maxIters = 5
 	# the algorithm will pause and plot after this
 	# iteration number; 0 ensures it will plot right off
 	minPauseIter = 0
@@ -110,6 +110,14 @@ ex6_crp_gibbs <- function(data, sd, initz) {
 	mu0 = matrix(c(0,0), ncol=2, byrow=TRUE)
 	# number of data points
 	Ndata = nrow(data)
+	
+	print('initialization')
+	print(alpha)
+	print(Sig)
+	print(Sig0)
+	print(Prec)
+	print(Prec0)
+	print(mu0)
 
 	# initialize the sampler
 	z = initz  # initial cluster assignments
@@ -119,7 +127,15 @@ ex6_crp_gibbs <- function(data, sd, initz) {
 	# run the Gibbs sampler
 	for(iter in 1:maxIters) {
 		# take a Gibbs step at each data point
+	  
+	  print('iter')
+	  print(iter)
+	  
 		for(n in 1:Ndata) {
+		  
+		  print('n')
+		  print(n)
+		  
 			# get rid of the nth data point
 			c = z[n]
 			counts[c] = counts[c] - 1
@@ -149,17 +165,30 @@ ex6_crp_gibbs <- function(data, sd, initz) {
 				} else {
 					sum_data = data[z==c,]
 				}
-				print('itermediate vars')
-				print(Prec)
+				
+				#print('itermediate vars')
+				#print(Prec)
+				print('sum_data')
 				print(sum_data)
-				print(Prec %*% sum_data)
+				#print(Prec %*% sum_data)
 				c_mean = c_Sig %*% (Prec %*% sum_data + Prec0 %*% t(mu0))
+				print('c_mean')
+				print(c_mean)
+				print('counts[c]')
+				print(counts[c])
+				print('log(counts[c])')
+				print(log(counts[c]))
+				print('dmvnorm')
+				print(dmvnorm(data[n,], mean = c_mean, sigma = c_Sig + Sig, log = TRUE))
 				log_weights[c] = log(counts[c]) + dmvnorm(data[n,], mean = c_mean, sigma = c_Sig + Sig, log = TRUE)
+
 			}
 			# find the unnormalized log probability
 			# for the "new" cluster
 			log_weights[Nclust+1] = log(alpha) + dmvnorm(data[n,], mean = mu0, sigma = Sig0 + Sig, log = TRUE)
-
+			print('new log_weights')
+			print(log_weights)
+			
 			# transform unnormalized log probabilities
 			# into probabilities
 			max_weight = max(log_weights)
@@ -167,32 +196,34 @@ ex6_crp_gibbs <- function(data, sd, initz) {
 			loc_probs = exp(log_weights)
 			loc_probs = loc_probs / sum(loc_probs)
 
+			print('loc_probs')
+			print(loc_probs)
+			
 			# sample which cluster this point should
 			# belong to
 			newz = sample(1:(Nclust+1), 1, replace=TRUE, prob=loc_probs)
+			print('new z')
+			print(newz)
+			
 			# if necessary, instantiate a new cluster
 			if(newz == Nclust + 1) {
 				counts = c(counts,0)
 				Nclust = Nclust + 1
 			}
 			z[n] = newz
+			
+			print('z')
+			print(z)
+			
 			# update the cluster counts
 			counts[newz] = counts[newz] + 1
-	
-  		# if desired, plot the progress of the sampler
-  		if(iter >= minPauseIter) {	
-  		  print('next round')
-  		  print(iter)
-  		  print(z)
-  		  print(loc_probs)
-  		}
 		
 		}
 	}
 }
 
 # generate a data set with 100 data points
-data <- ex6_gen_data(Ndata=10,sd=1)
+data <- ex6_gen_data(Ndata=5,sd=1)
 # run a CRP Gibbs sampler
 # initialized with all data points in the same cluster
-ex6_crp_gibbs(data=data$x, sd=1, initz=rep(1,10))
+ex6_crp_gibbs(data=data$x, sd=1, initz=rep(1,5))

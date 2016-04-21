@@ -139,6 +139,16 @@ def run_gibbs(data,sd,sd_prior,initz,alpha):
     # number of data points
     number_of_datapoints = data.shape[2]
 
+
+    print 'initialization'
+    print alpha
+    print Sig
+    print Sig0
+    print Prec
+    print Prec0
+    print mu0
+
+
     # initialize the sampler
     z = initz  # initial cluster assignments
     cluster_counts = []
