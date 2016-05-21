@@ -78,18 +78,6 @@
                         7. Discussion
                     </script>
                 </section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Context
-
-                        - (Massive) programming courses produce (massive) collections of student solutions to each programming exercise.
-
-                        - The distribution of solutions reflects
-                            - student prior knowledge
-                            - teacher explanations
-                            - common misconceptions
-                    </script>
-                </section>
 
                 <!-- Example of nested vertical slides -->
                 <section>
@@ -111,7 +99,13 @@
                         <script type="text/template">
                             ## Sample Data
 
-                            <pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
+                            <pre><code class="hljs">
+                            def computeDeriv(poly):
+                                result=[]
+                                for power in xrange(1,len(poly)):
+                                    result.append(poly[power]*power)
+                                return result
+                            </code></pre>
                         </script>
                     </section>
                     <section data-markdown>
