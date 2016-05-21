@@ -162,12 +162,23 @@ def computeDeriv(poly):
                         <script type="text/template">
                             # Dataset
 
-                            - Solutions are collected from 6.00x
-                                - an introductory Python programming edX course
-                            - Running example throughout presentation will be 3875 student-written definitions of:
-                                - <pre><code class="hljs">iterPower(base,exp):</code></pre>
+                            - Solutions are collected from an introductory Python programming edX course (6.00x)
+                            
+                            - Running example throughout presentation will be 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):</code></pre>
                         </script>
                     </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Data from Early Pilots
+
+                            - Python programming teachers manually clustered <pre><code class="hljs">iterPower(base,exp):</code></pre> in many different, reasonable ways.
+                                1. Teachers have different internal clustering metrics. 2. Solutions can reasonably *belong to multiple clusters*.
+
+                            - Instead of clustering, i.e., assigning solutions to a single cluster, why not try *mixture modeling*, i.e., modeling solutions as a mixture of design choices?
+                        </script>
+                    </section>
+                    
+
                     <!-- <section>
                         <h2>Basement Level 2</h2>
                         <p>That's it, time to go back up.</p>
