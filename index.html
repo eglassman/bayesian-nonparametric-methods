@@ -88,12 +88,12 @@
                             ## Context
 
                             - (Massive) programming courses generate (massive) collections of student solutions.
-                                - Hundreds or thousands of solutions *to each programming exercise.* <!-- .element: class="fragment" -->
+                                - Hundreds or thousands of solutions *to each programming exercise.*
 
-                            - The distribution of solutions reflects <!-- .element: class="fragment" -->
-                                - student prior knowledge <!-- .element: class="fragment" -->
-                                - teacher explanations <!-- .element: class="fragment" -->
-                                - common misconceptions <!-- .element: class="fragment" -->
+                            - The distribution of solutions reflects:
+                                - student prior knowledge
+                                - teacher explanations
+                                - common misconceptions
                         </script>
                     </section>
                     <section data-markdown>
@@ -106,6 +106,21 @@
                                     result.append(poly[power]*power)
                                 return result
                             </code></pre>
+
+                            <pre><code class="hljs">def evaluatePoly(poly,x):
+    result=0
+    for i in range(0,len(poly)):
+        if poly[i]!=0:
+            result+=poly[i]*x**i
+    return result
+def computeDeriv(poly):
+    if poly[1]>0:
+        result=1*poly[1]**0
+    else:
+        result=(0.0,)
+    for i in range(2,len(poly)):
+        result=result+(i*poly[i],)
+    return result</code></pre>
                         </script>
                     </section>
                     <section data-markdown>
