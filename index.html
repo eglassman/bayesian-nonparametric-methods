@@ -120,14 +120,8 @@
 
                             ### Context
 
-                            - (Massive) programming courses generate (massive) collections of student solutions.
+                            (Massive) programming courses generate (massive) collections of student solutions *to each programming exercise.*
 
-                                - 100's or 1000's of solutions *to each programming exercise.*
-
-                                    - The *distribution of solution* to a particular exercise reflects:
-                                        - student prior knowledge
-                                        - teacher explanations
-                                        - common misconceptions
                         </script>
                     </section>
                     <section data-markdown>
@@ -161,10 +155,22 @@ def computeDeriv(poly):
                         <script type="text/template">
                             ## Problem
 
-                            - 100s of intro. programming students
-                            - Automated testing is a noisy predictor of code quality and grade points awarded.
+                            - Automated testing is a noisy predictor of code correctness and composition quality.
                             - ~10 person staff hand-grades exam solutions for an entire work day, 3x per semester.
-                            - As feedback, students only receive a number.
+                            - Feedback is poor: a single number per solution.
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Related Work
+
+                            ### Program Analysis
+
+                            - OverCode analysis pipeline deduplicates and canonicalizes solutions
+                            - OverCode user interface helps teachers
+                                - read fewer solutions
+                                - more easily context switch between solutions
                         </script>
                     </section>
 
@@ -178,9 +184,30 @@ def computeDeriv(poly):
                                 - common misconceptions
                         </script>
                     </section>
+
                     <section data-markdown>
                         <script type="text/template">
                             ## Related Work
+
+                            ### Topic Models
+
+                            - Latent Dirichlet Allocation (LDA) (Blei et al., 2003)
+                                - Typically applied to collections of text documents
+                                - Documents are modeled as exchangeable
+                                - *Words within documents* are modeled as exchangeable
+                                    - Clearly wrong, but helps make inference tractable
+                                - Data modeled as a term by document matrix containing term counts within each document
+                                - Learns topics, i.e., distributions over words
+                                - Learns topic distributions for each document
+                            
+                        </script>
+                    </section>
+
+                <section data-markdown>
+                        <script type="text/template">
+                            ## Related Work
+
+                            ### Topic Models
 
                             - Latent Dirichlet Allocation (LDA) (Blei et al., 2003)
                                 - Typically applied to collections of text documents
