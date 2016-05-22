@@ -66,13 +66,31 @@
                 </section>
                 <section data-markdown>
                     <script type="text/template">
-                        ## Outline
+                        # Outline
 
-                        1. Introduction
-                            - Context
-                            - Problem
-                            - Approach
-                        4. Dataset
+                        ## Introduction
+
+                        - Context: 100's or 1000's of student solutions to the same problem
+                        - Problem: give better feedback faster
+                        - Approach: "factorize" solutions into design choices
+
+                        <aside class="notes">
+                            - Context: thousands of student solutions to the same programming exercise
+                                - Source: introductory Python programming edX course
+                                - Early Pilots: many reasonable solution clusters
+                            - Problem: deliver better feedback faster
+                            - Related Work
+                            - Approach: "factorize" solutions into design choices and give feedback on choices, not entire solutions
+                        </aside>
+
+                    </script>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        # Outline
+
+                        ## Methods and Results
+
                         5. Methods
                             - Features
                             - Model Choice
@@ -81,14 +99,6 @@
                         8. Future Work
 
                         <aside class="notes">
-                            1. Introduction
-                            - Context: thousands of student solutions to the same programming exercise
-                            - Problem: deliver better feedback faster
-                            - Related Work
-                            - Approach: "factorize" solutions into design choices and give feedback on choices, not entire solutions
-                        4. Dataset
-                            - Source: introductory Python programming edX course
-                            - Early Pilots: many reasonable solution clusters
                         5. Methods
                             - Features: observe solution behavior during execution on test suite
                             - Model Choice: Latent Dirichlet Allocation (LDA) topic model
