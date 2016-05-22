@@ -141,13 +141,7 @@ def computeDeriv(poly):
                             - As feedback, students only receive a number.
                         </script>
                     </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Related Work
 
-                            
-                        </script>
-                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             ## A Bayesian Perspective
@@ -156,6 +150,21 @@ def computeDeriv(poly):
                                 - student prior knowledge
                                 - teacher explanations
                                 - common misconceptions
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Related Work
+
+                            - Latent Dirichlet Allocation (LDA) (Blei et al., 2003)
+                                - Typically applied to collections of text documents
+                                - Documents are modeled as exchangeable
+                                - *Words within documents* are modeled as exchangeable
+                                    - Clearly wrong, but helps make inference tractable
+                                - Data modeled as a term by document matrix containing term counts within each document
+                                - Learns topics, i.e., distributions over words
+                                - Learns topic distributions for each document
+                            
                         </script>
                     </section>
                     <section data-markdown>
