@@ -548,7 +548,6 @@ Reveal.addEventListener( 'customevent', function() {
         <script src="js/reveal.js"></script>
 
         <script>
-
             // More info https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
                 controls: true,
@@ -556,7 +555,9 @@ Reveal.addEventListener( 'customevent', function() {
                 history: true,
                 center: true,
 
-                transition: 'slide', // none/fade/slide/convex/concave/zoom
+                transition: 'none', // none/fade/slide/convex/concave/zoom
+                slideNumber: true, // Shows the slide number using default formatting
+                slideNumber: 'c/t', // Slide number formatting: "c/t":  flattened slide number / total slides
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
