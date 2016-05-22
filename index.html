@@ -229,14 +229,18 @@ def computeDeriv(poly):
 
                             ### Topic Models
 
-                            - Latent Dirichlet Allocation (LDA) (Blei et al., 2003)
-                                - Typically applied to collections of text documents
-                                - Documents are modeled as exchangeable
-                                - *Words within documents* are modeled as exchangeable
-                                    - Clearly wrong, but helps make inference tractable
-                                - Data modeled as a term by document matrix containing term counts within each document
-                                - Learns topics, i.e., distributions over words
-                                - Learns topic distributions for each document
+                            Latent Dirichlet Allocation (LDA)
+                            
+                            - Typical example application
+                                - modeling topics within collections of text documents 
+                            - Assumptions:
+                                - Documents are exchangeable
+                                - *Words within documents* are exchangeable
+                            - Input:
+                                - Term-by-document matrix containing term counts
+                            - Output:
+                                - Distribution of words within each topic
+                                - Distribution of topics within each document
                             
                         </script>
                     </section>
