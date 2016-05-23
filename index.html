@@ -251,11 +251,14 @@ def computeDeriv(poly):
                         <script type="text/template">
                             ## Approach
 
-                            **Apply mixture modeling (e.g, LDA) to solutions**
+                            **Apply Bayesian mixture modeling to solutions**
 
-                            - Compute 
-                            - Replace typical term-by-document matrix with feature-by-solution matrix
-                                - Features computed by OverCode analysis pipeline
+                            1. Compute features with OverCode analysis pipeline
+                            
+                            2. Compose feature-by-solution matrix
+                            
+                            3. Run Bayesian inference algorithm to infer mixture of design choices in each solution
+
                             
                         </script>
                     </section>
