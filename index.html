@@ -156,23 +156,31 @@
                         <script type="text/template">
                             <!-- ## Examples -->
 
-                            Two examples of student solutions:
+                            Three examples of student solutions:
 
-                            <pre><code class="hljs">def computeDeriv(poly):
-                                result=[]
-                                for power in xrange(1,len(poly)):
-                                    result.append(poly[power]*power)
-                                return result
+                            <pre><code class="hljs">def iterPower(base, exp):
+    if exp == 0:
+      return int(1)
+    else:
+      return iterPower(base, exp -1) * base
                             </code></pre>
 
-                            <pre><code class="hljs">def computeDeriv(poly):
-    if poly[1]>0:
-        result=1*poly[1]**0
-    else:
-        result=(0.0,)
-    for i in range(2,len(poly)):
-        result=result+(i*poly[i],)
-    return result</code></pre>
+                            <pre><code class="hljs">def iterPower(base, exp):
+    power = 1
+    while exp > 0:
+        power *= base
+        exp = exp - 1
+    return power</code></pre>
+                            <pre><code class="hljs">def iterPower(base, exp):
+    res=1
+    counter=1
+    if exp==0:
+        return 1    
+    while (counter < exp):
+        res=res*base
+        counter+=1
+    return res*base</code></pre>
+
                         </script>
                     </section>
 
