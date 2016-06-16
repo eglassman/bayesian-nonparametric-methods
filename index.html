@@ -312,6 +312,63 @@
 
                     <section data-markdown>
                         <script type="text/template">
+                            <!-- ## Examples -->
+
+                            Three examples of student solutions:
+
+                            <pre><code class="hljs">def iterPower(base, exp):
+    if exp == 0:
+      return int(1)
+    else:
+      return iterPower(base, exp -1) * base
+                            </code></pre>
+
+                            <pre><code class="hljs">def iterPower(base, exp):
+    power = 1
+    while exp > 0:
+        power *= base
+        exp = exp - 1
+    return power</code></pre>
+                            <pre><code class="hljs">def iterPower(base, exp):
+    res=1
+    counter=1
+    if exp==0:
+        return 1    
+    while (counter < exp):
+        res=res*base
+        counter+=1
+    return res*base</code></pre>
+
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            <!-- ## Examples -->
+
+                            Sequence of variable values for iterPower(5,3):
+
+                            ####Solution 1
+                            - exp:  3, 2, 1, 0, 1, 2, 3
+                            - base:  5
+                            ####Solution 2
+                            - exp:  3, 2, 1, 0
+                            - base:  5
+                            - power:  1, 5, 25, 125
+                            ####Solution 3
+                            - exp:  3
+                            - base:  5
+                            - counter:  0, 1, 2, 3
+                            - res:  1, 5, 25
+                            - [returned value]: 125
+
+                        </script>
+                    </section>
+
+                    
+
+                    <section data-markdown>
+                        <script type="text/template">
                             ## Related Work
 
                             ### OverCode
