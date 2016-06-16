@@ -139,35 +139,7 @@
 
                     </script>
                 </section> -->
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Sample Data
-
-                            #### Two student definitions for 'computeDeriv'
-
-                            <pre><code class="hljs">def computeDeriv(poly):
-                                result=[]
-                                for power in xrange(1,len(poly)):
-                                    result.append(poly[power]*power)
-                                return result
-                            </code></pre>
-
-                            <pre><code class="hljs">def evaluatePoly(poly,x):
-    result=0
-    for i in range(0,len(poly)):
-        if poly[i]!=0:
-            result+=poly[i]*x**i
-    return result
-def computeDeriv(poly):
-    if poly[1]>0:
-        result=1*poly[1]**0
-    else:
-        result=(0.0,)
-    for i in range(2,len(poly)):
-        result=result+(i*poly[i],)
-    return result</code></pre> <!-- .element: class="fragment" -->
-                        </script>
-                    </section>
+                    
                     <section data-markdown>
                         <script type="text/template">
                             <!-- ## Problem -->
@@ -199,6 +171,31 @@ def computeDeriv(poly):
 
                         </script>
                     </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Examples
+
+                            Two student definitions for 'computeDeriv':
+
+                            <pre><code class="hljs">def computeDeriv(poly):
+                                result=[]
+                                for power in xrange(1,len(poly)):
+                                    result.append(poly[power]*power)
+                                return result
+                            </code></pre>
+
+                            <pre><code class="hljs">def computeDeriv(poly):
+    if poly[1]>0:
+        result=1*poly[1]**0
+    else:
+        result=(0.0,)
+    for i in range(2,len(poly)):
+        result=result+(i*poly[i],)
+    return result</code></pre> <!-- .element: class="fragment" -->
+                        </script>
+                    </section>
+
                     <section data-markdown>
                         <script type="text/template">
                             - Solutions are a *mixture of design choices*.
