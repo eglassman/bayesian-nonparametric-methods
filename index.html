@@ -142,6 +142,30 @@
                     
                     <section data-markdown>
                         <script type="text/template">
+                            ## Examples
+
+                            Two student definitions for 'computeDeriv':
+
+                            <pre><code class="hljs">def computeDeriv(poly):
+                                result=[]
+                                for power in xrange(1,len(poly)):
+                                    result.append(poly[power]*power)
+                                return result
+                            </code></pre>
+
+                            <pre><code class="hljs">def computeDeriv(poly):
+    if poly[1]>0:
+        result=1*poly[1]**0
+    else:
+        result=(0.0,)
+    for i in range(2,len(poly)):
+        result=result+(i*poly[i],)
+    return result</code></pre> <!-- .element: class="fragment" -->
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
                             <!-- ## Problem -->
 
                             - Automated testing is a noisy predictor of code correctness and composition quality. 
@@ -172,29 +196,7 @@
                         </script>
                     </section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Examples
-
-                            Two student definitions for 'computeDeriv':
-
-                            <pre><code class="hljs">def computeDeriv(poly):
-                                result=[]
-                                for power in xrange(1,len(poly)):
-                                    result.append(poly[power]*power)
-                                return result
-                            </code></pre>
-
-                            <pre><code class="hljs">def computeDeriv(poly):
-    if poly[1]>0:
-        result=1*poly[1]**0
-    else:
-        result=(0.0,)
-    for i in range(2,len(poly)):
-        result=result+(i*poly[i],)
-    return result</code></pre> <!-- .element: class="fragment" -->
-                        </script>
-                    </section>
+                    
 
                     <section data-markdown>
                         <script type="text/template">
