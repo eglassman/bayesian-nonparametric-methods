@@ -44,137 +44,82 @@
 
     <body>
 
-    <!--p>
-        <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-    </p-->
-                            <!--h2>Introduction</h2>
-                        <p>Slides can be nested inside of each other.</p>
-                        <p>Use the <em>Space</em> key to navigate through all slides.</p>
-                        <br>
-                        <a href="#" class="navigate-down">
-                            <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-                        </a-->
+    <div class="reveal">
 
-        <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            
+            <section data-markdown>
+                <script type="text/template">
+                    Learning Latent Student Design Decisions 
 
-            <!-- Any section element inside of this container is displayed as a slide -->
-            <div class="slides">
-                <section data-markdown>
-                    <script type="text/template">
-                        Learning Latent Student Design Decisions 
-
-                        in Python Programming Classes
+                    in Python Programming Classes
 
 <pre><code class="hljs">def computeDeriv(poly):
 ...
 </code></pre>
-                        
-                        Elena L. Glassman, PhD candidate
-                        
-                        #### MIT CSAIL
-                    </script>
-                </section>
-                <section data-markdown>
-                    <script type="text/template">
-                        <!-- # Outline -->
-
-                        <!-- ## Introduction -->
-
-                        - We have hundreds or thousands of student solutions to the same Python programming exercise.
-                        
-                        - We want to give better feedback faster.
-                        
-                        <!-- - How can we "factorize solutions" into design choices? -->
-
-                        <aside class="notes">
-                            - Context: thousands of student solutions to the same programming exercise
-                                - Source: introductory Python programming edX course
-                                - Early Pilots: many reasonable solution clusters
-                            - Problem: deliver better feedback faster
-                            - Related Work
-                            - Approach: "factorize" solutions into design choices and give feedback on choices, not entire solutions
-                        </aside>
-
-                    </script>
-                </section>
-                <!-- <section data-markdown>
-                    <script type="text/template">
-                        ## Outline
-
-                        ### Methods and Results
-
-                        5. Methods
-                        
-                            - Chosen features: solution's dynamic behavior
-                            - Chosen model: Latent Dirichlet
-                        
-                        6. Results
-                        
-                        7. Discussion
-                        
-                        8. Future Work
-
-                        <aside class="notes">
-                        5. Methods
-                            - Features: observe solution behavior during execution on test suite
-                            - Model Choice: Latent Dirichlet Allocation (LDA) topic model
-                            - Procedure: run LDA on features of data, inspect resulting "topics"
-                        6. Results
-                            - initial results are promising!
-                        7. Discussion
-                        8. Future Work
-                        </aside>
-                    </script>
-                </section> -->
-
-                <!-- Example of nested vertical slides -->
-                <!-- <section> -->
-<!--                 <section data-markdown>
-                    <script type="text/template">
-                        ## Introduction
-
-                        ### Context
-
-                        (Massive) programming courses 
-                        
-                        generate (massive) collections of student solutions
-
-                        *to each programming problem.*
-
-                    </script>
-                </section> -->
                     
-                    <section data-markdown>
-                        <script type="text/template">
-                            <!-- ## Problem -->
+                    Elena L. Glassman, PhD candidate
+                    
+                    #### MIT CSAIL
+                </script>
+            </section>
+                
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- # Outline -->
 
-                            - Automated testing is a noisy predictor of code correctness and composition quality. 
+                    <!-- ## Introduction -->
 
-                            - At MIT, a ~10 person staff hand-grades exam solutions for an entire work day, 3x per semester.
+                    - We have hundreds or thousands of student solutions to the same Python programming exercise.
+                    
+                    - We want to
+                        - understand the whole collection of hundreds or thousands of student solutions
+                        - give better feedback faster
+                    
+                    <!-- - How can we "factorize solutions" into design choices? -->
 
-                        </script>
-                    </section>
+                    <aside class="notes">
+                        - Context: thousands of student solutions to the same programming exercise
+                            - Source: introductory Python programming edX course
+                            - Early Pilots: many reasonable solution clusters
+                        - Problem: deliver better feedback faster
+                        - Related Work
+                        - Approach: "factorize" solutions into design choices and give feedback on choices, not entire solutions
+                    </aside>
+                </script>
+            </section>
+                                    
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            <!-- ## Examples -->
+                    - Automated testing is a noisy predictor of code correctness and composition quality. 
 
-                            Three examples of student solutions:
+                    - At MIT, a ~10 person staff hand-grades exam solutions for an entire work day, 3x per semester.
 
-                            <pre><code class="hljs">def iterPower(base, exp):
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Examples -->
+
+                    Three examples of student solutions:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
     if exp == 0:
       return int(1)
     else:
-      return iterPower(base, exp -1) * base
-                            </code></pre>
+      return iterPower(base, exp -1) * base</code></pre>
 
-                            <pre><code class="hljs">def iterPower(base, exp):
+                    <pre><code class="hljs">def iterPower(base, exp):
     power = 1
     while exp > 0:
         power *= base
         exp = exp - 1
     return power</code></pre>
-                            <pre><code class="hljs">def iterPower(base, exp):
+                    <pre><code class="hljs">def iterPower(base, exp):
     res=1
     counter=1
     if exp==0:
@@ -184,155 +129,145 @@
         counter+=1
     return res*base</code></pre>
 
-                        </script>
-                    </section>
+                </script>
+            </section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            <!-- ## Problem -->
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
 
-                            <!-- Teacher Feedback: -->
+                    <!-- Teacher Feedback: -->
 
-                            - At MIT, students get back only one number per solution.
+                    - At MIT, students get back only one number per solution.
 
-                            - In general, inter-teacher agreement can be low.
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Why might feedback be inconsistent?
+                    - In general, inter-teacher agreement can be low.
+                </script>
+            </section>
 
-                            - Solutions are a *mixture of design choices*.
+            <section data-markdown>
+                <script type="text/template">
+                    Why might feedback be inconsistent?
 
-                            - Teachers may have different internal weights on what matters.
+                    - Solutions are a *mixture of design choices*.
 
-                        </script>
-                    </section>
+                    - Teachers may have different internal weights on what matters.
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Given:
+                </script>
+            </section>
 
-                            - Solutions are a *mixture of design choices*.
+            <section data-markdown>
+                <script type="text/template">
+                    ####Given:
 
-                            - Solutions are drawn from an underlying distribution influenced by
-                                - student prior knowledge
-                                - teacher explanations
-                                - common misconceptions
+                    - Solutions are a *mixture of design choices*.
 
-                        </script>
-                    </section>
+                    - Solutions are drawn from an underlying distribution influenced by
+                        - student prior knowledge
+                        - teacher explanations
+                        - common misconceptions
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Challenge:
+                </script>
+            </section>
 
-                            - Can we use mixture models to factorize solutions into design decisions?
+            <section data-markdown>
+                <script type="text/template">
+                    ####Challenge:
 
-                            ####Potential Benefits: 
+                    - Can we use mixture models to factorize solutions into design decisions?
 
-                            - Teachers could grade common student design decisions instead of every solution individually.
+                    ####Potential Benefits: 
 
-                        </script>
-                    </section>
+                    - Teachers could grade common student design decisions instead of every solution individually.
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Open Questions:
+                </script>
+            </section>
 
-                            - How do we represent solutions in order to apply mixture modeling?
+            <section data-markdown>
+                <script type="text/template">
+                    ####Open Questions:
 
-                            - Which mixture models are most appropriate for this challenge?
+                    - How do we represent solutions in order to apply mixture modeling?
 
-                        </script>
-                    </section>
+                    - Which mixture models are most appropriate for this challenge?
 
-                    <!-- <section data-markdown>
-                        <script type="text/template">
+                </script>
+            </section>
 
-                            ####Challenge:
+            <section data-markdown>
+                <script type="text/template">
+                    ####Feature Design
 
-                            Can we use mixture models to factorize solutions into design decisions?
+                    Design choices to potentially capture:
 
-                        </script>
-                    </section> -->
+                    - Readability
+                        - names
+                        - comments
+                        - syntax
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Feature Design
+                    - Approach & Correctness
+                        - semantics
 
-                            Design choices to potentially capture:
+                </script>
+            </section>
 
-                            - Readability
-                                - names
-                                - comments
-                                - syntax
+            <section data-markdown>
+                <script type="text/template">
+                    ####Model Choice
 
-                            - Approach & Correctness
-                                - semantics
+                    Domain knowledge to consider:
 
-                        </script>
-                    </section>
+                    - Some design decisions are not independent.
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Model Choice
+                    - Each new solution could introduce a novel design decision.
 
-                            Domain knowledge to consider:
+                </script>
+            </section>
 
-                            - Some design decisions are not independent.
+            <section data-markdown>
+                <script type="text/template">
+                    ####Feature Design
 
-                            - Each new solution could introduce a novel design decision.
+                    - Capture *semantics* by tracking variable values over time while solutions execute on test cases
+                    
+                    - Each variable's sequence of values is its *behavioral signature*
+                    
+                    - Across all solutions, variables with the same behaviorial signature may play the *same semantic role*
 
-                        </script>
-                    </section>
+                </script>
+            </section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Feature Design
+            <section data-markdown>
+                <script type="text/template">
+                    ####Model Choice
 
-                            - Capture *semantics* by tracking variable values over time while solutions execute on test cases
-                            
-                            - Each variable's sequence of values is its *behavioral signature*
-                            
-                            - Across all solutions, variables with the same behaviorial signature may play the *same semantic role*
+                    Domain knowledge to consider:
 
-                        </script>
-                    </section>
+                    - Some design decisions are not independent.
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Model Choice
+                    - Each new solution could introduce a novel design decision.
 
-                            Domain knowledge to consider:
+                </script>
+            </section>
 
-                            - Some design decisions are not independent.
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Examples -->
 
-                            - Each new solution could introduce a novel design decision.
+                    Three examples of student solutions:
 
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="text/template">
-                            <!-- ## Examples -->
-
-                            Three examples of student solutions:
-
-                            <pre><code class="hljs">def iterPower(base, exp):
+                    <pre><code class="hljs">def iterPower(base, exp):
     if exp == 0:
       return int(1)
     else:
-      return iterPower(base, exp -1) * base
-                            </code></pre>
+      return iterPower(base, exp -1) * base</code></pre>
 
-                            <pre><code class="hljs">def iterPower(base, exp):
+                    <pre><code class="hljs">def iterPower(base, exp):
     power = 1
     while exp > 0:
         power *= base
         exp = exp - 1
     return power</code></pre>
-                            <pre><code class="hljs">def iterPower(base, exp):
+                    <pre><code class="hljs">def iterPower(base, exp):
     res=1
     counter=1
     if exp==0:
@@ -342,107 +277,107 @@
         counter+=1
     return res*base</code></pre>
 
-                        </script>
-                    </section>
+                </script>
+            </section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            <!-- ## Examples -->
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Examples -->
 
-                            Executing iterPower(5,3):
+                    Executing iterPower(5,3):
 
-                            - Solution 1
-                                - exp:  3, 2, 1, 0, 1, 2, 3
-                                - base:  5
-                            - Solution 2
-                                - exp:  3, 2, 1, 0
-                                - base:  5
-                                - power:  1, 5, 25, 125
-                            - Solution 3
-                                - exp:  3
-                                - base:  5
-                                - counter:  0, 1, 2, 3
-                                - res:  1, 5, 25
-                                <!-- - [returned value]: 125 -->
+                    - Solution 1
+                        - exp:  3, 2, 1, 0, 1, 2, 3
+                        - base:  5
+                    - Solution 2
+                        - exp:  3, 2, 1, 0
+                        - base:  5
+                        - power:  1, 5, 25, 125
+                    - Solution 3
+                        - exp:  3
+                        - base:  5
+                        - counter:  0, 1, 2, 3
+                        - res:  1, 5, 25
+                        <!-- - [returned value]: 125 -->
 
-                        </script>
-                    </section>
+                </script>
+            </section>
 
-                    <section>
-                      <p>Variable by Solution Matrix</p>
+            <section>
+                <p>Variable by Solution Matrix</p>
 
-                      <table>
-                            <thead>
-                                <tr>
-                                  <td></td>
-                                  <td align="center">5</td>
-                                  <td align="center">3,2,1,0,1,2,3</td>
-                                  <td align="center">3,2,1,0</td>
-                                  <td>...</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                  <td>Solution 1</td>
-                                  <td align="center">1</td>
-                                  <td align="center">1</td>
-                                  <td align="center">0</td>
-                                  <td>...</td>
-                                </tr>
-                                <tr>
-                                  <td>Solution 2</td>
-                                  <td align="center">1</td>
-                                  <td align="center">0</td>
-                                  <td align="center">1</td>
-                                  <td>...</td>
-                                </tr>
-                                <tr>
-                                  <td>Solution 3</td>
-                                  <td align="center">1</td>
-                                  <td align="center">0</td>
-                                  <td align="center">0</td>
-                                  <td>...</td>
-                                </tr>
-                            </tbody>
-                      </table>
-                      </section>
+                <table>
+                    <thead>
+                        <tr>
+                          <td></td>
+                          <td align="center">5</td>
+                          <td align="center">3,2,1,0,1,2,3</td>
+                          <td align="center">3,2,1,0</td>
+                          <td>...</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>Solution 1</td>
+                          <td align="center">1</td>
+                          <td align="center">1</td>
+                          <td align="center">0</td>
+                          <td>...</td>
+                        </tr>
+                        <tr>
+                          <td>Solution 2</td>
+                          <td align="center">1</td>
+                          <td align="center">0</td>
+                          <td align="center">1</td>
+                          <td>...</td>
+                        </tr>
+                        <tr>
+                          <td>Solution 3</td>
+                          <td align="center">1</td>
+                          <td align="center">0</td>
+                          <td align="center">0</td>
+                          <td>...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ####Model Choice
+            <section data-markdown>
+                <script type="text/template">
+                    ####Model Choice
 
-                            - Variables are exchangeable.
-                            > Latent Dirichlet Allocation
+                    - Variables are exchangeable.
+                    > Latent Dirichlet Allocation
 
-                            - Some design decisions are not independent.
-                            > Correlated Topic Model
+                    - Some design decisions are not independent.
+                    > Correlated Topic Model
 
-                            - Each new solution could introduce a novel design decision. 
-                            > Heirarchical Dirichlet Process
+                    - Each new solution could introduce a novel design decision. 
+                    > Heirarchical Dirichlet Process
 
-                        </script>
-                    </section>
+                </script>
+            </section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Related Work
+            <section data-markdown>
+                <script type="text/template">
+                    ## Related Work
 
-                            ### OverCode
+                    ### OverCode
 
-                            - OverCode analysis pipeline canonicalizes and clusters solutions
-                                - Single canonicalized solution represents an entire cluster of solutions
-                                <img data-src="http://people.csail.mit.edu/elg/figures/fig3.png" alt="OverCode snapshot">
-                                - Computes static and dynamic features of each solution
+                    - OverCode analysis pipeline canonicalizes and clusters solutions
+                        - Single canonicalized solution represents an entire cluster of solutions
+                        <img data-src="http://people.csail.mit.edu/elg/figures/fig3.png" alt="OverCode snapshot">
+                        - Computes static and dynamic features of each solution
 
-                            <!-- - OverCode user interface helps teachers
-                                - read fewer solutions
-                                - more easily context switch between solutions -->
+                    <!-- - OverCode user interface helps teachers
+                        - read fewer solutions
+                        - more easily context switch between solutions -->
 
-                            <aside class="notes">
-                                OverCode (Glassman et al., '15)
-                            </aside>
-                        </script>
-                    </section>
+                    <aside class="notes">
+                        OverCode (Glassman et al., '15)
+                    </aside>
+                </script>
+            </section>
 
                     <section data-markdown>
                         <script type="text/template">
@@ -916,3 +851,62 @@ Reveal.addEventListener( 'customevent', function() {
 
     </body>
 </html>
+
+<!-- <section data-markdown>
+                    <script type="text/template">
+                        ## Outline
+
+                        ### Methods and Results
+
+                        5. Methods
+                        
+                            - Chosen features: solution's dynamic behavior
+                            - Chosen model: Latent Dirichlet
+                        
+                        6. Results
+                        
+                        7. Discussion
+                        
+                        8. Future Work
+
+                        <aside class="notes">
+                        5. Methods
+                            - Features: observe solution behavior during execution on test suite
+                            - Model Choice: Latent Dirichlet Allocation (LDA) topic model
+                            - Procedure: run LDA on features of data, inspect resulting "topics"
+                        6. Results
+                            - initial results are promising!
+                        7. Discussion
+                        8. Future Work
+                        </aside>
+                    </script>
+                </section> -->
+
+                <!-- Example of nested vertical slides -->
+                <!-- <section> -->
+<!--                 <section data-markdown>
+                    <script type="text/template">
+                        ## Introduction
+
+                        ### Context
+
+                        (Massive) programming courses 
+                        
+                        generate (massive) collections of student solutions
+
+                        *to each programming problem.*
+
+                    </script>
+                </section> -->
+
+
+    <!--p>
+        <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+    </p-->
+                            <!--h2>Introduction</h2>
+                        <p>Slides can be nested inside of each other.</p>
+                        <p>Use the <em>Space</em> key to navigate through all slides.</p>
+                        <br>
+                        <a href="#" class="navigate-down">
+                            <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+                        </a-->
