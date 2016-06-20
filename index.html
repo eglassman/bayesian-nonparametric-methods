@@ -51,7 +51,7 @@
             
             <section data-markdown>
                 <script type="text/template">
-                    Learning Latent Student Design Decisions 
+                    Learning Latent Student Design Choices 
 
                     in Introductory Python Programming Classes
 
@@ -117,7 +117,7 @@
 
                     - Approach & algorithm choices
 
-                    - Syntactic & naming choices
+                    - Syntactic & variable naming choices
 
                     Choices can be
                     - fine
@@ -130,6 +130,98 @@
                     
                 </script>
             </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    - We do not want to look at hundreds of solutions. 
+                    - We cannot look at thousands of solutions.
+
+                    #### Similarity Metric Design
+
+                    - Sensitive to what we care about
+                    - Ignore or hide what we do not care about
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    #### OverCode (Glassman et al. TOCHI '15)
+
+                    - Sensitive to
+                        - Approach choices
+                        - Syntactic choices
+
+                    - Ignores and hides
+                        - Variable naming choices
+                        - Commenting choices
+                        - Whitespace choices
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    
+
+<pre><code class="hljs">def iterPower(base, exp):
+    '''
+    base: int or float.
+    exp: int >= 0
+ 
+    returns: int or float, base^exp
+    '''
+    result = 1
+    while exp > 0:
+        result *= base
+        exp -= 1
+    return result
+</code></pre>
+
+<pre><code class="hljs">def iterPower(base, exp):
+    '''
+    base: int or float.
+    exp: int >= 0
+ 
+    returns: int or float, base^exp
+    '''
+    # Your code here
+    wynik = 1
+    while exp > 0:
+         wynik *= base
+   #      print(str(wynik))
+         exp -= 1
+   #      print(str(exp))
+
+    return wynik
+</code></pre>
+
+<pre><code class="hljs">def iterPower(base, exp):
+    '''
+    base: int or float.
+    exp: int >= 0
+ 
+    returns: int or float, base^exp
+    '''
+    result = 1
+    while exp > 0:
+        result *= base
+        exp -= 1
+    return result
+</code></pre>
+                    
+                </script>
+            </section>
+
+
+            
+        
+
+
 
             <!-- <section data-markdown>
                 <script type="text/template">
@@ -152,7 +244,7 @@
                 
                 <iframe src="https://web.mit.edu/elg/www/overcode/ui/" width= '100%' height='600'></iframe>
 
-                (Glassman et al. TOCHI '15)
+                
 
                 <!-- </div> -->
                 <!-- style='width: 1020px; height: 910px;' -->
