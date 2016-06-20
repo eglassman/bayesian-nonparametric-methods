@@ -574,12 +574,24 @@
                 </script>
             </section>
 
+            <!-- <section data-markdown>
+                <script type="text/template">
+                    #### Dataset
+
+                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
+...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
+                </script>
+            </section> -->
         
             <section data-markdown>
                 <script type="text/template">
                     #### Apply LDA to solutions
 
-                    1. Compute variable behavior signatures with OverCode analysis pipeline
+                    1. Collect 3875 solutions for <pre><code class="hljs">iterPower(base,exp):
+...</code></pre> collected from intro Python edX course
+
+                    2. Run OverCode analysis pipeline
+                        - produced 977 solution clusters
                     
                     2. Compose signature-by-solution matrix
                     
@@ -588,19 +600,19 @@
                 </script>
             </section>
 
-            <section data-markdown>
-                <script type="text/template">
-                    #### Dataset
-
-                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
-...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
-                </script>
-            </section>
+            
 
             <section data-markdown>
                 <script type="text/template">
                     #### Results
 
+                    The OverCode
+pipeline produced a set of 977 deduplicated Python pro-
+grams and a set of features for each program, including
+which variable sequences were observed during execution.
+Another script turned this output into a variable-by-solution
+matrix for the 977 deduplicated programs, which were
+then fed into various models for analysis.
                     
                 </script>
             </section>
