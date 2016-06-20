@@ -528,7 +528,7 @@
                 <script type="text/template">
                     ####Model Choice
 
-                    - Variables are exchangeable.
+                    - Variable signatures are exchangeable.
                     > Latent Dirichlet Allocation
 
                     - Some design choices are not independent.
@@ -539,59 +539,53 @@
 
                 </script>
             </section>
-            
 
-            
+            <section data-markdown>
+                <script type="text/template">
+                    
 
+                    #### Latent Dirichlet Allocation (LDA)
 
+                    - Typical example: modeling *mixtures of topics* within collections of text documents 
+                
+                    - Assumptions:
+                        - Documents are exchangeable
+                        - *Words within documents* are exchangeable
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Related Work
+                    - Input: Term-by-document matrix containing term counts
 
-                            ### Bayesian Mixture Models
+                    - Output: Distribution of words within each topic, topics within each document
+                    
+                </script>
+            </section>
 
-                            - **Typical example:** Latent Dirichlet Allocation (LDA) modeling *mixtures of topics* within collections of text documents 
-<!--                             - Assumptions:
-                                - Documents are exchangeable
-                                - *Words within documents* are exchangeable -->
+            <section data-markdown>
+                <script type="text/template">
+                    #### Apply LDA to solutions
 
-                            - **Input:** Term-by-document matrix containing term counts
-
-                            - **Output:** Distribution of words within each topic, topics within each document
-                            
-                        </script>
-                    </section>
-
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Approach
-
-                            **Apply Bayesian mixture modeling to solutions**
-
-                            1. Compute features with OverCode analysis pipeline
-                            
-                            2. Compose feature-by-solution matrix
-                            
-                            3. Run Bayesian inference algorithm to infer mixture of design choices in each solution
-                            
-                        </script>
-                    </section>
+                    1. Compute features with OverCode analysis pipeline
+                    
+                    2. Compose feature-by-solution matrix
+                    
+                    3. Run LDA to infer mixture of design choices in each solution
+                    
+                </script>
+            </section>
 
                     
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Approach
+            <section data-markdown>
+                <script type="text/template">
+                    ## Approach
 
-                            Future Work
+                    Future Work
 
-                            2. Teachers review design choices instead of individual solutions
+                    2. Teachers review design choices instead of individual solutions
 
-                            3. Teacher feedback propagated back to students inferred to have made that design choice.
-                            
-                        </script>
-                    </section>
+                    3. Teacher feedback propagated back to students inferred to have made that design choice.
+                    
+                </script>
+            </section>
 
                 <!-- <section data-markdown>
                         <script type="text/template">
@@ -653,38 +647,9 @@
                             - Learning latent variables has been applied in a variety of contexts. For processing text, it is common to treat doc- uments as exchangeable as well as treat the words within each document as exchangeable. This matches the genera- tive model of Latent Dirichlet Allocation (LDA) (Blei et al., 2003). Topics, i.e., distributions over words, are learned, as well as the distributions over topics found in each docu- ment.
                         </script>
                     </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Model Choice
-
-                            
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Procedure
-
-                            
-                        </script>
-                    </section>
+                    
                 </section>
 
-                <section>
-                    <h2>Point of View</h2>
-                    <p>
-                        Press <strong>ESC</strong> to enter the slide overview.
-                    </p>
-                    <p>
-                        Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-                    </p>
-                </section>
-
-                <section>
-                    <h2>Touch Optimized</h2>
-                    <p>
-                        Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-                    </p>
-                </section>
 
                 <section data-markdown>
                     <script type="text/template">
