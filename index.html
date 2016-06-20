@@ -486,7 +486,7 @@
             </section>
 
             <section>
-                <p>Variable by Solution Matrix</p>
+                <p>Variable Signature by Solution Matrix</p>
 
                 <table>
                     <thead>
@@ -591,28 +591,133 @@
 ...</code></pre> collected from intro Python edX course
 
                     2. Run OverCode analysis pipeline
-                        - produced 977 solution clusters
+                        - produced 977 solution clusters, including their variable signatures
                     
                     2. Compose signature-by-solution matrix
                     
                     3. Run LDA to infer mixture of design choices in each solution
+                        - Set to find an arbitrary number of "topics"
                     
                 </script>
             </section>
 
-            
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 100 "topics"
+
+                    Solutions exemplifying the same popular topic:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = base
+    if exp == 0:
+        result = 1
+    while exp > 1:
+        result *=base
+        exp -=1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = base
+    if exp == 1:
+        result = base
+    if exp == 0:
+        result = 1
+    while exp > 1:
+        result *= base
+        exp -= 1
+    return result</code></pre>
+                    
+                </script>
+            </section>
 
             <section data-markdown>
                 <script type="text/template">
-                    #### Results
+                    #### LDA set to 100 "topics"
 
-                    The OverCode
-pipeline produced a set of 977 deduplicated Python pro-
-grams and a set of features for each program, including
-which variable sequences were observed during execution.
-Another script turned this output into a variable-by-solution
-matrix for the 977 deduplicated programs, which were
-then fed into various models for analysis.
+                    Solutions exemplifying another popular topic:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = 1
+    while exp > 0:
+       result = result * base
+       exp = exp - 1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    while exp>0:
+        exp-=1
+        result=base*result
+    return result</code></pre>
+
+                    <aside class="notes">
+                        The two topics above correctly tease apart the difference between \texttt{while}-based solutions with extra (unnecessary) conditional statements from those without them.
+                    </aside>
+                    
+                </script>
+            </section>
+        
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 25 "topics"
+
+                    Solutions containing four different popular topics:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = 1
+    while exp > 0:
+       result = result * base
+       exp = exp - 1
+    return result</code></pre>
+
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    while exp>0:
+        result*=base
+        exp-=1
+    return result</code></pre>
+
+                    <aside class="notes">
+                        These two deduplicated solutions are examples of the many solutions associated with all the first four most popular topics. Popularity, in this case, was determined by whether the topic was associated with at least $500$ deduplicated solutions. The first two of the popular topics overlap to the point that they are assigned to the same deduplicated solutions $578$ times; they are not assigned to the same deduplicated solution only $101$ times.
+                    </aside>
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 25 "topics"
+
+                    Solutions exemplifying another popular topic:
+
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    i=0
+    while i < exp:
+        result*=base
+        i+=1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base,exp):
+    if exp==0:
+        return 1.0
+    b=exp
+    result=base
+    while b>1:
+        result*=base
+        b-=1
+    return result</code></pre>
+                    <aside class="notes">
+                        These two groups of solutions above containing some different popular topics correctly tease apart the difference between using the input argument \texttt{exp} as a counter and creating a separate variable as a counter, so as not to modify function inputs. This can be considered a superior software development choice.
+                    </aside>
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Discussion
+
+                    1. LDA on variable-signature-by-solution matrix is promising method for factoring solutions into design choices.  
+                    2. LDA is not the most appropriate model.
+                    3. Parameter for number of topics has non-trivial consequences.
                     
                 </script>
             </section>
@@ -621,9 +726,9 @@ then fed into various models for analysis.
                 <script type="text/template">
                     ####Future Work
 
-                    1. Teachers provide feedback on design choices instead of each solution.
+                    1. Add LDA-based inspection of solution clusters to OverCode interface
 
-                    2. Feedback could be propagated back to students inferred to have made that design choice.
+                    2. Teachers provide feedback on "topics" instead of solutions, to be propagated back to students.
                     
                 </script>
             </section>
@@ -632,7 +737,7 @@ then fed into various models for analysis.
                 <script type="text/template">
                     ####Thanks
 
-                    - Tamara Broderick
+                    - Tamara Broderick & Finale Doshi-Velez
                     - Rishabh Singh
                     - Rob Miller
                     
