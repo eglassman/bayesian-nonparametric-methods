@@ -360,41 +360,7 @@
                 Distinct combinations of design choices produce a long tail
                 <iframe width= '100%' height='600' frameborder="0" scrolling="no" src="https://plot.ly/~elglassman/1.embed"></iframe>
             </section> -->
-                                    
-            
-
-            <section data-markdown>
-                <script type="text/template">
-                    <!-- ## Examples -->
-
-                    Three examples of student solutions:
-
-                    <pre><code class="hljs">def iterPower(base, exp):
-    if exp == 0:
-      return int(1)
-    else:
-      return iterPower(base, exp -1) * base</code></pre>
-
-                    <pre><code class="hljs">def iterPower(base, exp):
-    power = 1
-    while exp > 0:
-        power *= base
-        exp = exp - 1
-    return power</code></pre>
-                    <pre><code class="hljs">def iterPower(base, exp):
-    res=1
-    counter=1
-    if exp==0:
-        return 1    
-    while (counter < exp):
-        res=res*base
-        counter+=1
-    return res*base</code></pre>
-
-                </script>
-            </section>
-
-            
+                            
 
             <!-- <section data-markdown>
                 <script type="text/template">
@@ -436,7 +402,7 @@
 
             <section data-markdown>
                 <script type="text/template">
-                    ####Feature Design
+                    ####Solution Representation Choices
 
                     Design choices to potentially capture:
 
@@ -445,7 +411,7 @@
                         - comments
                         - syntax
 
-                    - Approach & Correctness
+                    - Approach
                         - semantics
 
                 </script>
@@ -453,42 +419,14 @@
 
             <section data-markdown>
                 <script type="text/template">
-                    ####Mixture Model Choice
+                    ####Solution Representation
 
-                    <!-- Domain knowledge to consider: -->
-
-                    - Some design decisions are not independent.
-
-                    - Each new solution could introduce a novel design decision.
+                    Represent solutions as a bag of variables' distinct behavioral signatures to capture semantic design choices.
 
                 </script>
             </section>
 
-            <section data-markdown>
-                <script type="text/template">
-                    ####Feature Design
-
-                    - Capture *semantics* by tracking variable values over time while solutions execute on test cases
-                    
-                    - Each variable's sequence of values is its *behavioral signature*
-                    
-                    - Across all solutions, variables with the same behaviorial signature may play the *same semantic role*
-
-                </script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Model Choice
-
-                    Domain knowledge to consider:
-
-                    - Some design decisions are not independent.
-
-                    - Each new solution could introduce a novel design decision.
-
-                </script>
-            </section>
+            
 
             <section data-markdown>
                 <script type="text/template">
@@ -590,7 +528,7 @@
                     - Variables are exchangeable.
                     > Latent Dirichlet Allocation
 
-                    - Some design decisions are not independent.
+                    - Some design choices are not independent.
                     > Correlated Topic Model
 
                     - Each new solution could introduce a novel design decision. 
@@ -598,47 +536,9 @@
 
                 </script>
             </section>
+            
 
-            <section data-markdown>
-                <script type="text/template">
-                    ## Related Work
-
-                    ### OverCode
-
-                    - OverCode analysis pipeline canonicalizes and clusters solutions
-                        - Single canonicalized solution represents an entire cluster of solutions
-                        <img data-src="http://people.csail.mit.edu/elg/figures/fig3.png" alt="OverCode snapshot">
-                        - Computes static and dynamic features of each solution
-
-                    <!-- - OverCode user interface helps teachers
-                        - read fewer solutions
-                        - more easily context switch between solutions -->
-
-                    <aside class="notes">
-                        OverCode (Glassman et al., '15)
-                    </aside>
-                </script>
-            </section>
-
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## Related Work
-
-                            ### OverCode
-                            
-                            - Each combination of design choices produces a new cluster. 
-                                - &rarr; Too many clusters
-
-                            - Teachers manually cluster solutions in different, reasonable ways.
-                                - &rarr; Not clear how to create a smaller number of (larger) clusters that all teachers accept
-
-                            <aside class="notes">
-                                1. Teachers have different internal clustering metrics. 2. Solutions can reasonably *belong to multiple clusters*.
-                            </aside>
-
-                            <!-- - Instead of clustering, i.e., assigning solutions to a single cluster, why not try *mixture modeling*, i.e., modeling solutions as a mixture of design choices? -->
-                        </script>
-                    </section>
+            
 
 
 
@@ -1175,4 +1075,78 @@ Reveal.addEventListener( 'customevent', function() {
                         <br>
                         <a href="#" class="navigate-down">
                             <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-                        </a-->
+                        </a
+
+
+<section data-markdown>
+                <script type="text/template">
+
+                    Three examples of student solutions:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    if exp == 0:
+      return int(1)
+    else:
+      return iterPower(base, exp -1) * base</code></pre>
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    power = 1
+    while exp > 0:
+        power *= base
+        exp = exp - 1
+    return power</code></pre>
+                    <pre><code class="hljs">def iterPower(base, exp):
+    res=1
+    counter=1
+    if exp==0:
+        return 1    
+    while (counter < exp):
+        res=res*base
+        counter+=1
+    return res*base</code></pre>
+
+                </script>
+            </section>
+
+
+<section data-markdown>
+                <script type="text/template">
+                    ## Related Work
+
+                    ### OverCode
+
+                    - OverCode analysis pipeline canonicalizes and clusters solutions
+                        - Single canonicalized solution represents an entire cluster of solutions
+                        <img data-src="http://people.csail.mit.edu/elg/figures/fig3.png" alt="OverCode snapshot">
+                        - Computes static and dynamic features of each solution
+
+                    - OverCode user interface helps teachers
+                        - read fewer solutions
+                        - more easily context switch between solutions
+
+                    <aside class="notes">
+                        OverCode (Glassman et al., '15)
+                    </aside>
+                </script>
+            </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Related Work
+
+                            ### OverCode
+                            
+                            - Each combination of design choices produces a new cluster. 
+                                - &rarr; Too many clusters
+
+                            - Teachers manually cluster solutions in different, reasonable ways.
+                                - &rarr; Not clear how to create a smaller number of (larger) clusters that all teachers accept
+
+                            <aside class="notes">
+                                1. Teachers have different internal clustering metrics. 2. Solutions can reasonably *belong to multiple clusters*.
+                            </aside>
+
+                            - Instead of clustering, i.e., assigning solutions to a single cluster, why not try *mixture modeling*, i.e., modeling solutions as a mixture of design choices?
+                        </script>
+                    </section>
+                        -->
