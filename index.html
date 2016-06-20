@@ -542,6 +542,21 @@
 
             <section data-markdown>
                 <script type="text/template">
+                    ####Model Choice
+
+                    - Variable signatures can belong to multiple design decisions.
+                    > Indian Buffett Process
+
+                    - TF-IDF and pLSA/pLSI were not considered.
+                        - Reveal little inter- or intra-solution statistical structure
+
+                    
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
                     ####Latent Dirichlet Allocation (LDA)
 
                     - Typical example: modeling *mixtures of topics* within collections of text documents
@@ -557,31 +572,14 @@
                 </script>
             </section>
 
-            <section data-markdown>
-                <script type="text/template">
-
-                #### Latent Dirichlet Allocation (LDA)
-
-                - Typical example: modeling *mixtures of topics* within collections of text documents 
-            
-                - Assumptions:
-                    - Documents are exchangeable
-                    - Words within documents are exchangeable
-
-                - Input: Term-by-document matrix containing term counts
-
-                - Output: Distribution of words within each topic, topics within each document
-                    
-                </script>
-            </section>
-
+        
             <section data-markdown>
                 <script type="text/template">
                     #### Apply LDA to solutions
 
-                    1. Compute features with OverCode analysis pipeline
+                    1. Compute variable behavior signatures with OverCode analysis pipeline
                     
-                    2. Compose feature-by-solution matrix
+                    2. Compose signature-by-solution matrix
                     
                     3. Run LDA to infer mixture of design choices in each solution
                     
@@ -592,7 +590,8 @@
                 <script type="text/template">
                     #### Dataset
 
-                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
+                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
+...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
                 </script>
             </section>
 
@@ -608,9 +607,20 @@
                 <script type="text/template">
                     ####Future Work
 
-                    2. Teachers provide feedback on design choices instead of each solution.
+                    1. Teachers provide feedback on design choices instead of each solution.
 
-                    3. Feedback could be propagated back to students inferred to have made that design choice.
+                    2. Feedback could be propagated back to students inferred to have made that design choice.
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Thanks
+
+                    - Tamara Broderick
+                    - Rishabh Singh
+                    - Rob Miller
                     
                 </script>
             </section>
