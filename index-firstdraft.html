@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Learning Latent Student Design Decisions in Python Programming Classes</title>
+
+        <meta name="description" content="A presentation for ICML 2016">
+        <meta name="author" content="Elena L. Glassman">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <!-- <link rel="stylesheet" href="css/theme/black.css" id="theme"> -->
+        <link rel="stylesheet" href="css/theme/white.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- reveal-ally for accessibility -->
+        <link rel="stylesheet" href="plugin/accessibility/helper.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <style>
+        thead {font-weight: bold;}
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            
+            <section data-markdown>
+                <script type="text/template">
+                    Learning Latent Student Design Choices 
+
+                    in Introductory Python Programming Classes
+
+<pre><code class="hljs">def number_of_vowels(input_string):
+   # Your code here
+</code></pre>
+                    
+                    Elena L. Glassman, PhD candidate
+                    
+                    #### MIT CSAIL
+                </script>
+            </section>
+                
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- # Outline -->
+
+                    <!-- ## Introduction -->
+
+                    - We have 
+                        - collections of hundreds or thousands of student solutions to the same Python programming exercise
+                    
+                    - We want to
+                        - understand the choices student make within each collection
+                        - give better feedback faster
+                    
+                    <!-- - How can we "factorize solutions" into design choices? -->
+
+                    <aside class="notes">
+                        - Context: thousands of student solutions to the same programming exercise
+                            - Source: introductory Python programming edX course
+                            - Early Pilots: many reasonable solution clusters
+                        - Problem: deliver better feedback faster
+                        - Related Work
+                        - Approach: "factorize" solutions into design choices and give feedback on choices, not entire solutions
+                    </aside>
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    #### Programming exercise
+
+                    - Implement f(x) such that
+                        - f(x1) = y1
+                        - f(x2) = y2
+                        - f(x3) = y3
+
+                    - Example problems:
+                        - count the vowels in a string
+                        - compute the derivative of a polynomial
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    #### understand student choices
+
+                    - Approach & algorithm choices
+
+                    - Syntactic & variable naming choices
+
+                    Choices can be
+                    - fine
+                    - terrific
+                    - terrible
+
+                    <aside class="notes">
+                        We want to understand & respond to these choices to better help students.
+                    </aside>
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    - We do not want to look at hundreds of solutions. 
+                    - We cannot look at thousands of solutions.
+
+                    #### Similarity Metric Design
+
+                    - Sensitive to what we care about
+                    - Ignore or hide what we do not care about
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    #### OverCode (Glassman et al. TOCHI '15)
+
+                    - Sensitive to
+                        - Approach choices
+                        - Syntactic choices
+
+                    - Ignores and hides
+                        - Variable naming choices
+                        - Commenting choices
+                        - Whitespace choices
+                        - Statement order (in correct solutions)
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    
+
+<pre><code class="hljs">def iterPower(base, exp):
+    '''
+    base: int or float.
+    exp: int >= 0
+ 
+    returns: int or float, base^exp
+    '''
+    result = 1
+    while exp > 0:
+        result *= base
+        exp -= 1
+    return result
+</code></pre>
+
+</script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+
+<pre><code class="hljs">def iterPower(base, exp):
+    '''
+    base: int or float.
+    exp: int >= 0
+ 
+    returns: int or float, base^exp
+    '''
+    # Your code here
+    wynik = 1
+    while exp > 0:
+         wynik *= base
+   #      print(str(wynik))
+         exp -= 1
+   #      print(str(exp))
+
+    return wynik
+</code></pre>
+
+</script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+
+<pre><code class="hljs">def iterPower(base, exp):
+    '''
+    base: int or float.
+    exp: int >= 0
+ 
+    returns: int or float, base^exp
+    '''
+    result = 1
+    while exp > 0:
+        result *= base
+        exp -= 1
+    return result
+</code></pre>
+                    
+                </script>
+            </section>
+
+
+    
+            <!-- <section data-markdown>
+                <script type="text/template">
+                  
+
+                    #### understand the whole collection
+
+                    There is a lot of superficial variety and underlying redundancy.
+
+                    - Hidden amongst the redundancy are
+                        - terrific choices
+                        - terrible choices
+
+                </script>
+            </section> -->
+
+            <section>
+                OverCode
+                <!-- <div class="stretch"> -->
+                
+                <iframe src="https://web.mit.edu/elg/www/overcode/ui/" width= '100%' height='600'></iframe>
+
+                
+
+                <!-- </div> -->
+                <!-- style='width: 1020px; height: 910px;' -->
+                <aside class="notes">
+                    We've preserved synatactice choices and removed naming variety, and given the volume of solutions, we can see how the most popular and most special snowflake ways students write solutions.
+                </aside>
+            </section>  
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Semantic Analysis for OverCode
+
+                    - Track variable values over time while solutions execute on test cases
+                    
+                    - Each variable's sequence of values is its *behavioral signature*
+                    
+                    - Across all solutions, variables with the same behaviorial signature may play the *same semantic role*
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Syntactic Regularization for OverCode
+
+                    1. Regularize whitespace
+
+                    2. Remove comments
+                    
+                    3. Rename variables with the same behavioral signature to its most popular name
+                    
+                    4. Cluster (correct) solutions that have the same *set* of lines
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####OverCode Results
+
+                    - Search & filter clusters of solutions
+
+                    - Understand popular solutions, spot unusual ones
+
+                    - Standardized language across all solutions
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####OverCode Results
+
+                    - OverCode allowed 24 teachers to
+                        - more quickly develop a high-level view of students’ understanding and misconceptions
+                        - provide feedback that is relevant to more students
+                    - compared to the status quo
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Long Tail
+
+                    - 7 ways to initialize 'result'
+                    - 4 ways to update 'result'
+                    - 3 ways to iterate over input
+
+                    ...
+
+                    > 7 x 4 x 3 = 84 distinct clusters
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    #### give better feedback faster
+
+                    - Automated testing is fast but noisy.
+
+                    - When graded or clustered by hand, inter-teacher agreement can be low.
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    Why might human-generated grades or clusters be inconsistent?
+
+                    - I assume:
+
+                        - Solutions are a *mixture* of design choices.
+
+                        - Teachers have different internal weights on what matters.
+
+                </script>
+            </section>
+
+            <!-- <section>
+                Distinct combinations of design choices produce a long tail
+                <iframe width= '100%' height='600' frameborder="0" scrolling="no" src="https://plot.ly/~elglassman/1.embed"></iframe>
+            </section> -->
+                            
+
+            <!-- <section data-markdown>
+                <script type="text/template">
+                    ####Given:
+
+                    - Solutions are a *mixture of design choices*.
+
+                    - Solutions are drawn from an underlying distribution influenced by
+                        - student prior knowledge
+                        - teacher explanations
+                        - common misconceptions
+
+                </script>
+            </section> -->
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Challenge:
+
+                    - Can we use mixture models to factorize solutions into design choices?
+
+                    ####Potential Benefits: 
+
+                    - Teachers could grade common student design choices instead of every solution individually.
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Open Questions:
+
+                    - How do we represent solutions in order to apply mixture modeling?
+
+                    - Which mixture models are most appropriate for this challenge?
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Solution Representation Choices
+
+                    Design choices to potentially capture:
+
+                    - Readability
+                        - names
+                        - comments
+                        - syntax
+
+                    - Approach
+                        - semantics
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Solution Representation
+
+                    - Represent solutions as a bag of variables' behavioral signatures
+
+                        - Already produced by OverCode
+                        - Capture semantic design choices
+
+                </script>
+            </section>
+
+            
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Examples -->
+
+                    Three examples of student solutions:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    if exp == 0:
+      return int(1)
+    else:
+      return iterPower(base, exp -1) * base</code></pre>
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    power = 1
+    while exp > 0:
+        power *= base
+        exp = exp - 1
+    return power</code></pre>
+                    <pre><code class="hljs">def iterPower(base, exp):
+    res=1
+    counter=1
+    if exp==0:
+        return 1    
+    while (counter < exp):
+        res=res*base
+        counter+=1
+    return res*base</code></pre>
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Examples -->
+
+                    Executing iterPower(5,3):
+
+                    - Solution 1
+                        - exp:  3, 2, 1, 0, 1, 2, 3
+                        - base:  5
+                    - Solution 2
+                        - exp:  3, 2, 1, 0
+                        - base:  5
+                        - power:  1, 5, 25, 125
+                    - Solution 3
+                        - exp:  3
+                        - base:  5
+                        - counter:  0, 1, 2, 3
+                        - res:  1, 5, 25
+                        <!-- - [returned value]: 125 -->
+
+                </script>
+            </section>
+
+            <section>
+                <p>Variable Signature by Solution Matrix</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                          <td></td>
+                          <td align="center">5</td>
+                          <td align="center">3,2,1,0,1,2,3</td>
+                          <td align="center">3,2,1,0</td>
+                          <td>...</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>Solution 1</td>
+                          <td align="center">1</td>
+                          <td align="center">1</td>
+                          <td align="center">0</td>
+                          <td>...</td>
+                        </tr>
+                        <tr>
+                          <td>Solution 2</td>
+                          <td align="center">1</td>
+                          <td align="center">0</td>
+                          <td align="center">1</td>
+                          <td>...</td>
+                        </tr>
+                        <tr>
+                          <td>Solution 3</td>
+                          <td align="center">1</td>
+                          <td align="center">0</td>
+                          <td align="center">0</td>
+                          <td>...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Model Choice
+
+                    - Variable signatures are exchangeable.
+                    > Latent Dirichlet Allocation
+
+                    - Some design choices are not independent.
+                    > Correlated Topic Model
+
+                    - Each new solution could introduce a novel design decision. 
+                    > Heirarchical Dirichlet Process
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Model Choice
+
+                    - Variable signatures can belong to multiple design decisions.
+                    > Indian Buffett Process
+
+
+                    <aside class="notes">
+                    TF-IDF and pLSA/pLSI were not considered.
+                        - Reveal little inter- or intra-solution statistical structure
+                    </aside>
+                    
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Latent Dirichlet Allocation (LDA)
+
+                    - Typical example: modeling *mixtures of topics* within collections of text documents
+
+                    - Assumptions:
+                        - Documents are exchangeable
+                        - Words within documents are exchangeable
+
+                    - Input: Term-by-document matrix containing term counts
+
+                    - Output: Distribution of words within each topic, topics within each document
+
+                </script>
+            </section>
+
+            <!-- <section data-markdown>
+                <script type="text/template">
+                    #### Dataset
+
+                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
+...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
+                </script>
+            </section> -->
+        
+            <section data-markdown>
+                <script type="text/template">
+                    #### Apply LDA to solutions
+
+                    1. Collect 3875 solutions for iterPower collected from intro Python edX course
+
+                    2. Run OverCode analysis pipeline
+                        - produced 977 solution clusters, including their variable signatures
+                    
+                    2. Compose signature-by-solution matrix
+                    
+                    3. Run LDA to infer mixture of design choices in each solution
+                        - Set to find an arbitrary number of "topics"
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 100 "topics"
+
+                    Solutions exemplifying the same popular topic:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = base
+    if exp == 0:
+        result = 1
+    while exp > 1:
+        result *=base
+        exp -=1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = base
+    if exp == 1:
+        result = base
+    if exp == 0:
+        result = 1
+    while exp > 1:
+        result *= base
+        exp -= 1
+    return result</code></pre>
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 100 "topics"
+
+                    Solutions exemplifying another popular topic:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = 1
+    while exp > 0:
+       result = result * base
+       exp = exp - 1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    while exp>0:
+        exp-=1
+        result=base*result
+    return result</code></pre>
+
+                    <aside class="notes">
+                        The two topics above correctly tease apart the difference between \texttt{while}-based solutions with extra (unnecessary) conditional statements from those without them.
+                    </aside>
+                    
+                </script>
+            </section>
+        
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 25 "topics"
+
+                    Solutions containing four different popular topics:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = 1
+    while exp > 0:
+       result = result * base
+       exp = exp - 1
+    return result</code></pre>
+
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    while exp>0:
+        result*=base
+        exp-=1
+    return result</code></pre>
+
+                    <aside class="notes">
+                        These two deduplicated solutions are examples of the many solutions associated with all the first four most popular topics. Popularity, in this case, was determined by whether the topic was associated with at least $500$ deduplicated solutions. The first two of the popular topics overlap to the point that they are assigned to the same deduplicated solutions $578$ times; they are not assigned to the same deduplicated solution only $101$ times.
+                    </aside>
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### LDA set to 25 "topics"
+
+                    Solutions exemplifying another popular topic:
+
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    i=0
+    while i < exp:
+        result*=base
+        i+=1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base,exp):
+    if exp==0:
+        return 1.0
+    b=exp
+    result=base
+    while b>1:
+        result*=base
+        b-=1
+    return result</code></pre>
+                    <aside class="notes">
+                        These two groups of solutions above containing some different popular topics correctly tease apart the difference between using the input argument \texttt{exp} as a counter and creating a separate variable as a counter, so as not to modify function inputs. This can be considered a superior software development choice.
+                    </aside>
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Discussion
+
+                    1. LDA on variable-signature-by-solution matrix is promising method for factoring solutions into design choices.  
+                    <!-- 2. LDA is not the most appropriate model. -->
+                    3. Parameter for number of topics has non-trivial consequences.
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Discussion
+
+                    1. LDA is not the most appropriate model. 
+                    2. Future models could account for syntactic choices as well.
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Future Work
+
+                    1. Add LDA-based inspection of solution clusters to OverCode interface
+                        - with human-friendly support for adjusting parameters
+
+                    2. Teachers provide feedback on "topics" instead of solutions, to be propagated back to students.
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Thanks
+
+                    - Tamara Broderick & Finale Doshi-Velez
+                    - Rishabh Singh
+                    - Rob Miller
+                    
+                </script>
+            </section>
+
+                <!-- <section data-markdown>
+                        <script type="text/template">
+                            ## Related Work
+
+                            ### Topic Models
+
+                            - Latent Dirichlet Allocation (LDA) (Blei et al., 2003)
+                                - Typically applied to collections of text documents
+                                - Documents are modeled as exchangeable
+                                - *Words within documents* are modeled as exchangeable
+                                    - Clearly wrong, but helps make inference tractable
+                                - Data modeled as a term by document matrix containing term counts within each document
+                                - Learns topics, i.e., distributions over words
+                                - Learns topic distributions for each document
+                            
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Approach
+
+                            1. "Factorize" solutions into combinations of design choices.
+                            2. Teachers review design choices, not solutions.
+                            3. Propagate teacher feedback and points to students inferred to have made that design choice.
+                        </script>
+                    </section> -->
+                <!-- </section> -->
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Dataset
+
+                            - Solutions are collected from an introductory Python programming edX course (6.00x)
+                            
+                            - Running example throughout presentation will be 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):</code></pre>
+                        </script>
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Data from Early Pilots
+
+                            - Python programming teachers manually clustered <pre><code class="hljs">iterPower(base,exp):</code></pre> in many different, reasonable ways.
+                                1. Teachers have different internal clustering metrics. 2. Solutions can reasonably *belong to multiple clusters*.
+
+                            - Instead of clustering, i.e., assigning solutions to a single cluster, why not try *mixture modeling*, i.e., modeling solutions as a mixture of design choices?
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            # Methods
+
+                            ## Features
+
+                            - Learning latent variables has been applied in a variety of contexts. For processing text, it is common to treat doc- uments as exchangeable as well as treat the words within each document as exchangeable. This matches the genera- tive model of Latent Dirichlet Allocation (LDA) (Blei et al., 2003). Topics, i.e., distributions over words, are learned, as well as the distributions over topics found in each docu- ment.
+                        </script>
+                    </section>
+                    
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Markdown support
+
+                        Write content using inline or external Markdown.
+                        Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+                        ```
+                        <section data-markdown>
+                          ## Markdown support
+
+                          Write content using inline or external Markdown.
+                          Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+                        </section>
+                        ```
+                    </script>
+                </section>
+
+                <section>
+                    <section id="fragments">
+                        <h2>Fragments</h2>
+                        <p>Hit the next arrow...</p>
+                        <p class="fragment">... to step through ...</p>
+                        <p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+                        <aside class="notes">
+                            This slide has fragments which are also stepped through in the notes window.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Fragment Styles</h2>
+                        <p>There's different types of fragments, like:</p>
+                        <p class="fragment grow">grow</p>
+                        <p class="fragment shrink">shrink</p>
+                        <p class="fragment fade-out">fade-out</p>
+                        <p class="fragment fade-up">fade-up (also down, left and right!)</p>
+                        <p class="fragment current-visible">current-visible</p>
+                        <p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
+                    </section>
+                </section>
+
+                <section id="transitions">
+                    <h2>Transition Styles</h2>
+                    <p>
+                        You can select from different transitions, like: <br>
+                        <a href="?transition=none#/transitions">None</a> -
+                        <a href="?transition=fade#/transitions">Fade</a> -
+                        <a href="?transition=slide#/transitions">Slide</a> -
+                        <a href="?transition=convex#/transitions">Convex</a> -
+                        <a href="?transition=concave#/transitions">Concave</a> -
+                        <a href="?transition=zoom#/transitions">Zoom</a>
+                    </p>
+                </section>
+
+                <section id="themes">
+                    <h2>Themes</h2>
+                    <p>
+                        reveal.js comes with a few themes built in: <br>
+                        <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+                    </p>
+                </section>
+
+                <section>
+                    <section data-background="#dddddd">
+                        <h2>Slide Backgrounds</h2>
+                        <p>
+                            Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+                        </p>
+                        <a href="#" class="navigate-down">
+                            <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+                        </a>
+                    </section>
+                    <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+                        <h2>Image Backgrounds</h2>
+                        <pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
+                    </section>
+                    <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+                        <h2>Tiled Backgrounds</h2>
+                        <pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+                    </section>
+                    <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+                        <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+                            <h2>Video Backgrounds</h2>
+                            <pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+                        </div>
+                    </section>
+                    <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+                        <h2>... and GIFs!</h2>
+                    </section>
+                </section>
+
+                <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+                    <h2>Background Transitions</h2>
+                    <p>
+                        Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+                    </p>
+                    <pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+                </section>
+
+                <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                    <h2>Background Transitions</h2>
+                    <p>
+                        You can override background transitions per-slide.
+                    </p>
+                    <pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+                </section>
+
+                <section>
+                    <h2>Pretty Code</h2>
+                    <pre><code class="hljs" data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+                    </code></pre>
+                    <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+                </section>
+
+                <section>
+                    <h2>Marvelous List</h2>
+                    <ul>
+                        <li>No order here</li>
+                        <li>Or here</li>
+                        <li>Or here</li>
+                        <li>Or here</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Fantastic Ordered List</h2>
+                    <ol>
+                        <li>One is smaller than...</li>
+                        <li>Two is smaller than...</li>
+                        <li>Three!</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Tabular Tables</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Value</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apples</td>
+                                <td>$1</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>Lemonade</td>
+                                <td>$2</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>Bread</td>
+                                <td>$3</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Clever Quotes</h2>
+                    <p>
+                        These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                        &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+                    </p>
+                    <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                        &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+                        reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h2>Intergalactic Interconnections</h2>
+                    <p>
+                        You can link between slides internally,
+                        <a href="#/2/3">like this</a>.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Speaker View</h2>
+                    <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+                    <p>Press the <em>S</em> key to try it out.</p>
+
+                    <aside class="notes">
+                        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Export to PDF</h2>
+                    <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+                    <iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                </section>
+
+                <section>
+                    <h2>Global State</h2>
+                    <p>
+                        Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+                        will be added as a class to the document element when the slide is open. This lets you
+                        apply broader style changes, like switching the page background.
+                    </p>
+                </section>
+
+                <section data-state="customevent">
+                    <h2>State Events</h2>
+                    <p>
+                        Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+                    </p>
+                    <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.addEventListener( 'customevent', function() {
+    console.log( '"customevent" has fired' );
+} );
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Take a Moment</h2>
+                    <p>
+                        Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Much more</h2>
+                    <ul>
+                        <li>Right-to-left support</li>
+                        <li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+                        <li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+                        <li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+                        <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+                    </ul>
+                </section>
+
+                <section style="text-align: left;">
+                    <h1>THE END</h1>
+                    <p>
+                        - <a href="http://slides.com">Try the online editor</a> <br>
+                        - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+                    </p>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'none', // none/fade/slide/convex/concave/zoom
+                slideNumber: true, // Shows the slide number using default formatting
+                slideNumber: 'c/t', // Slide number formatting: "c/t":  flattened slide number / total slides
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/accessibility/helper.js', async: true, condition: function() { 
+                            return !!document.body.classList; 
+                        } 
+                    }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
+
+
+
+<!-- 
+
+<section data-markdown>
+                <script type="text/template">
+                    ## Problem
+
+                    #### give better feedback faster
+
+                    - Automated testing is fast but noisy.
+                        - a noisy predictor of code correctness and composition quality
+
+                    - Feedback by hand is slow and may have low information content.
+
+                    <aside class="notes">
+                        At MIT:
+                        - a ~10 person staff hand-grades exam solutions for an entire work day, 3x per semester.
+                        - students get back only one number per solution
+                    </aside>
+
+                </script>
+            </section>
+
+
+<section data-markdown>
+                    <script type="text/template">
+                        ## Outline
+
+                        ### Methods and Results
+
+                        5. Methods
+                        
+                            - Chosen features: solution's dynamic behavior
+                            - Chosen model: Latent Dirichlet
+                        
+                        6. Results
+                        
+                        7. Discussion
+                        
+                        8. Future Work
+
+                        <aside class="notes">
+                        5. Methods
+                            - Features: observe solution behavior during execution on test suite
+                            - Model Choice: Latent Dirichlet Allocation (LDA) topic model
+                            - Procedure: run LDA on features of data, inspect resulting "topics"
+                        6. Results
+                            - initial results are promising!
+                        7. Discussion
+                        8. Future Work
+                        </aside>
+                    </script>
+                </section> -->
+
+                <!-- Example of nested vertical slides -->
+                <!-- <section> -->
+<!--                 <section data-markdown>
+                    <script type="text/template">
+                        ## Introduction
+
+                        ### Context
+
+                        (Massive) programming courses 
+                        
+                        generate (massive) collections of student solutions
+
+                        *to each programming problem.*
+
+                    </script>
+                </section> -->
+
+
+    <!--p>
+        <small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+    </p-->
+                            <!--h2>Introduction</h2>
+                        <p>Slides can be nested inside of each other.</p>
+                        <p>Use the <em>Space</em> key to navigate through all slides.</p>
+                        <br>
+                        <a href="#" class="navigate-down">
+                            <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+                        </a
+
+
+<section data-markdown>
+                <script type="text/template">
+
+                    Three examples of student solutions:
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    if exp == 0:
+      return int(1)
+    else:
+      return iterPower(base, exp -1) * base</code></pre>
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    power = 1
+    while exp > 0:
+        power *= base
+        exp = exp - 1
+    return power</code></pre>
+                    <pre><code class="hljs">def iterPower(base, exp):
+    res=1
+    counter=1
+    if exp==0:
+        return 1    
+    while (counter < exp):
+        res=res*base
+        counter+=1
+    return res*base</code></pre>
+
+                </script>
+            </section>
+
+
+<section data-markdown>
+                <script type="text/template">
+                    ## Related Work
+
+                    ### OverCode
+
+                    - OverCode analysis pipeline canonicalizes and clusters solutions
+                        - Single canonicalized solution represents an entire cluster of solutions
+                        <img data-src="http://people.csail.mit.edu/elg/figures/fig3.png" alt="OverCode snapshot">
+                        - Computes static and dynamic features of each solution
+
+                    - OverCode user interface helps teachers
+                        - read fewer solutions
+                        - more easily context switch between solutions
+
+                    <aside class="notes">
+                        OverCode (Glassman et al., '15)
+                    </aside>
+                </script>
+            </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Related Work
+
+                            ### OverCode
+                            
+                            - Each combination of design choices produces a new cluster. 
+                                - &rarr; Too many clusters
+
+                            - Teachers manually cluster solutions in different, reasonable ways.
+                                - &rarr; Not clear how to create a smaller number of (larger) clusters that all teachers accept
+
+                            <aside class="notes">
+                                1. Teachers have different internal clustering metrics. 2. Solutions can reasonably *belong to multiple clusters*.
+                            </aside>
+
+                            - Instead of clustering, i.e., assigning solutions to a single cluster, why not try *mixture modeling*, i.e., modeling solutions as a mixture of design choices?
+                        </script>
+                    </section>
+                        -->
