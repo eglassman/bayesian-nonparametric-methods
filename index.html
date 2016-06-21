@@ -24,6 +24,9 @@
         <!-- reveal-ally for accessibility -->
         <link rel="stylesheet" href="plugin/accessibility/helper.css">
 
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
         <!-- Printing and PDF exports -->
         <script>
             var link = document.createElement( 'link' );
@@ -72,10 +75,10 @@
                     <!-- ## Introduction -->
 
                     - Given: 
-                        - collections of hundreds or thousands of student solutions to the same Python programming exercise
+                        - hundreds or thousands of student solutions to the same Python programming exercise
                     
                     - Desired:
-                        - understand the choices student make within each collection
+                        - understand the choices student
                         - give better feedback faster
                     
                     <!-- - How can we "factorize solutions" into design choices? -->
@@ -107,6 +110,9 @@
                         - count the vowels in a string
                         - compute the derivative of a polynomial
 
+                    - Performance on test suite is automatic but noisy.
+                        - MIT CS intro Python course grades by hand.
+
                 </script>
             </section>
 
@@ -134,16 +140,33 @@
 
             <section data-markdown>
                 <script type="text/template">
-                    <!-- ## Problem -->
+                    #### choices are buried in volume
 
                     - (Many) teachers do not enjoy looking at hundreds of solutions. 
                     - Teachers cannot look at thousands of solutions.
-
-                    #### Similarity Metric Design
-
-                    - Sensitive to what we care about
-                    - Ignore or hide what we do not care about
                     
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### Option 1: Unsupervised Clustering
+
+                    - Solution Representation
+
+                        - Readability
+                            - names
+                            - comments
+                            - syntax
+
+                        - Approach
+                            - semantics
+
+                    - Design similarity metric
+
+                        - Ignore or hide what we do not care about
+                        - Sensitive to what we care about
+                        
                 </script>
             </section>
 
@@ -153,100 +176,18 @@
 
                     #### OverCode (Glassman et al. TOCHI '15)
 
-                    - Sensitive to
-                        - Approach choices
-                        - Syntactic choices
-
                     - Ignores and hides
                         - Variable naming choices
                         - Commenting choices
                         - Whitespace choices
                         - Statement order (in correct solutions)
+
+                    - Sensitive to
+                        - Approach choices
+                        - Syntactic choices
                     
                 </script>
             </section>
-
-            <section data-markdown>
-                <script type="text/template">
-                    
-
-<pre><code class="hljs">def iterPower(base, exp):
-    '''
-    base: int or float.
-    exp: int >= 0
- 
-    returns: int or float, base^exp
-    '''
-    result = 1
-    while exp > 0:
-        result *= base
-        exp -= 1
-    return result
-</code></pre>
-
-</script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-
-<pre><code class="hljs">def iterPower(base, exp):
-    '''
-    base: int or float.
-    exp: int >= 0
- 
-    returns: int or float, base^exp
-    '''
-    # Your code here
-    wynik = 1
-    while exp > 0:
-         wynik *= base
-   #      print(str(wynik))
-         exp -= 1
-   #      print(str(exp))
-
-    return wynik
-</code></pre>
-
-</script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-
-<pre><code class="hljs">def iterPower(base, exp):
-    '''
-    base: int or float.
-    exp: int >= 0
- 
-    returns: int or float, base^exp
-    '''
-    result = 1
-    while exp > 0:
-        result *= base
-        exp -= 1
-    return result
-</code></pre>
-                    
-                </script>
-            </section>
-
-
-    
-            <!-- <section data-markdown>
-                <script type="text/template">
-                  
-
-                    #### understand the whole collection
-
-                    There is a lot of superficial variety and underlying redundancy.
-
-                    - Hidden amongst the redundancy are
-                        - terrific choices
-                        - terrible choices
-
-                </script>
-            </section> -->
 
             <section>
                 OverCode
@@ -254,55 +195,10 @@
                 
                 <iframe src="https://web.mit.edu/elg/www/overcode/ui/" width= '100%' height='600'></iframe>
 
-                
-
-                <!-- </div> -->
-                <!-- style='width: 1020px; height: 910px;' -->
                 <aside class="notes">
                     We've preserved synatactice choices and removed naming variety, and given the volume of solutions, we can see how the most popular and most special snowflake ways students write solutions.
                 </aside>
             </section>  
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Semantic Analysis for OverCode
-
-                    - Track variable values over time while solutions execute on test cases
-                    
-                    - Each variable's sequence of values is its *behavioral signature*
-                    
-                    - Across all solutions, variables with the same behaviorial signature may play the *same semantic role*
-
-                </script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Syntactic Regularization for OverCode
-
-                    1. Regularize whitespace
-
-                    2. Remove comments
-                    
-                    3. Rename variables with the same behavioral signature to its most popular name
-                    
-                    4. Cluster (correct) solutions that have the same *set* of lines
-
-                </script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####OverCode Results
-
-                    - Search & filter clusters of solutions
-
-                    - Understand popular solutions, spot unusual ones
-
-                    - Standardized language across all solutions
-
-                </script>
-            </section>
 
             <section data-markdown>
                 <script type="text/template">
@@ -320,9 +216,11 @@
                 <script type="text/template">
                     ####Long Tail
 
-                    - 7 ways to initialize 'result'
-                    - 4 ways to update 'result'
-                    - 3 ways to iterate over input
+                    - Exponential growth of clusters based on both syntactic and semantic variability
+
+                        - 7 ways to initialize 'result'
+                        - 4 ways to update 'result'
+                        - 3 ways to iterate over input
 
                     ...
 
@@ -333,26 +231,24 @@
 
             <section data-markdown>
                 <script type="text/template">
-                    <!-- ## Problem -->
+                    ####Option 2: Cluster the Clusters
 
-                    #### give better feedback faster
+                    - Bayesian Case Model (Kim et al.)
 
-                    - Automated testing is fast but noisy.
-
-                    - When graded or clustered by hand, inter-teacher agreement can be low.
+                    <iframe src="https://www.youtube.com/embed/8PwHigCDdW8" width='100%' height='600'></iframe>
 
                 </script>
             </section>
 
             <section data-markdown>
                 <script type="text/template">
-                    Why might human-generated grades or clusters be inconsistent?
+                    ####Option 3: Mixture Models
 
-                    - I assume:
+                    - When graded or clustered by hand, inter-teacher agreement can be low.
 
-                        - Solutions are a *mixture* of design choices.
+                    - Why?
 
-                        - Teachers have different internal weights on what matters.
+                        - Assume: solutions are a *mixture* of design choices and teachers have different internal weights on what matters.
 
                 </script>
             </section>
@@ -377,7 +273,7 @@
                 </script>
             </section> -->
 
-            <section data-markdown>
+            <!-- <section data-markdown>
                 <script type="text/template">
                     ####Challenge:
 
@@ -388,7 +284,7 @@
                     - Teachers could grade common student design choices instead of every solution individually.
 
                 </script>
-            </section>
+            </section> -->
 
             <section data-markdown>
                 <script type="text/template">
@@ -438,11 +334,25 @@
 
                     Three examples of student solutions:
 
-                    <pre><code class="hljs">def iterPower(base, exp):
+                    <div class="container-fluid">
+                      <div class="row-fluid">
+                        <div class="span6">
+                          <pre><code class="hljs">def iterPower(base, exp):
     if exp == 0:
       return int(1)
     else:
       return iterPower(base, exp -1) * base</code></pre>
+                        </div>
+                        <div class="span6">
+                          - exp:  3, 2, 1, 0, 1, 2, 3
+                          - base:  5
+                        </div>
+                      </div>
+                    </div>
+
+                    
+
+                    
 
                     <pre><code class="hljs">def iterPower(base, exp):
     power = 1
@@ -588,7 +498,7 @@
                 <script type="text/template">
                     #### Apply LDA to solutions
 
-                    1. Collect 3875 solutions for iterPower collected from intro Python edX course
+                    1. Collect 3875 solutions for iterPower collected from one programming problem from intro Python edX course
 
                     2. Run OverCode analysis pipeline
                         - produced 977 solution clusters, including their variable signatures
@@ -1286,3 +1196,44 @@ Reveal.addEventListener( 'customevent', function() {
                         </script>
                     </section>
                         -->
+
+                        <!-- <section data-markdown>
+                <script type="text/template">
+                    ####Semantic Analysis for OverCode
+
+                    - Track variable values over time while solutions execute on test cases
+                    
+                    - Each variable's sequence of values is its *behavioral signature*
+                    
+                    - Across all solutions, variables with the same behaviorial signature may play the *same semantic role*
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Syntactic Regularization for OverCode
+
+                    1. Regularize whitespace
+
+                    2. Remove comments
+                    
+                    3. Rename variables with the same behavioral signature to its most popular name
+                    
+                    4. Cluster (correct) solutions that have the same *set* of lines
+
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####OverCode Results
+
+                    - Search & filter clusters of solutions
+
+                    - Understand popular solutions, spot unusual ones
+
+                    - Standardized language across all solutions
+
+                </script>
+            </section> -->
