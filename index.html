@@ -344,23 +344,24 @@
       return iterPower(base, exp -1) * base</code></pre>
                         </div>
                         <div class="col-sm-6">
-                          - exp:  3, 2, 1, 0, 1, 2, 3
-                          - base:  5
+                          exp:  3, 2, 1, 0, 1, 2, 3<br>
+                          base:  5
                         </div>
-                      </div>
-                    </div>
-
-                    
-
-                    
-
-                    <pre><code class="hljs">def iterPower(base, exp):
+                        <div class="col-sm-6">
+                          <pre><code class="hljs">def iterPower(base, exp):
     power = 1
     while exp > 0:
         power *= base
         exp = exp - 1
     return power</code></pre>
-                    <pre><code class="hljs">def iterPower(base, exp):
+                        </div>
+                        <div class="col-sm-6">
+                        exp:  3, 2, 1, 0<br>
+                        base:  5<br>
+                        power:  1, 5, 25, 125
+                        </div>
+                        <div class="col-sm-6">
+                          <pre><code class="hljs">def iterPower(base, exp):
     res=1
     counter=1
     if exp==0:
@@ -369,13 +370,22 @@
         res=res*base
         counter+=1
     return res*base</code></pre>
+                        </div>
+                        <div class="col-sm-6">
+                        exp:  3<br>
+                        base:  5<br>
+                        counter:  0, 1, 2, 3<br>
+                        res:  1, 5, 25<br>
+                        </div>
+                      </div>
+                    </div>
 
                 </script>
             </section>
 
-            <section data-markdown>
+            <!-- <section data-markdown>
                 <script type="text/template">
-                    <!-- ## Examples -->
+                    ## Examples
 
                     Executing iterPower(5,3):
 
@@ -391,10 +401,10 @@
                         - base:  5
                         - counter:  0, 1, 2, 3
                         - res:  1, 5, 25
-                        <!-- - [returned value]: 125 -->
+                        - [returned value]: 125
 
                 </script>
-            </section>
+            </section> -->
 
             <section>
                 <p>Variable Signature by Solution Matrix</p>
@@ -437,39 +447,6 @@
 
             <section data-markdown>
                 <script type="text/template">
-                    ####Model Choice
-
-                    - Variable signatures are exchangeable.
-                    > Latent Dirichlet Allocation
-
-                    - Some design choices are not independent.
-                    > Correlated Topic Model
-
-                    - Each new solution could introduce a novel design decision. 
-                    > Hierarchical Dirichlet Process
-
-                </script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Model Choice
-
-                    - Variable signatures can belong to multiple design decisions.
-                    > Indian Buffett Process
-
-
-                    <aside class="notes">
-                    TF-IDF and pLSA/pLSI were not considered.
-                        - Reveal little inter- or intra-solution statistical structure
-                    </aside>
-                    
-
-                </script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
                     ####Latent Dirichlet Allocation (LDA)
 
                     - Typical example: modeling *mixtures of topics* within collections of text documents
@@ -485,15 +462,6 @@
                 </script>
             </section>
 
-            <!-- <section data-markdown>
-                <script type="text/template">
-                    #### Dataset
-
-                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
-...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
-                </script>
-            </section> -->
-        
             <section data-markdown>
                 <script type="text/template">
                     #### Apply LDA to solutions
@@ -641,6 +609,42 @@
                     
                 </script>
             </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Future Models
+
+                    - Some design choices are not independent.
+                    > Correlated Topic Model
+
+                    - Each new solution could introduce a novel design decision. 
+                    > Hierarchical Dirichlet Process
+
+                    - Variable signatures can belong to multiple design decisions.
+                    > Indian Buffett Process
+
+
+                    <aside class="notes">
+                    TF-IDF and pLSA/pLSI were not considered.
+                        - Reveal little inter- or intra-solution statistical structure
+                    </aside>
+
+                </script>
+            </section>
+
+            
+            
+
+            <!-- <section data-markdown>
+                <script type="text/template">
+                    #### Dataset
+
+                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
+...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
+                </script>
+            </section> -->
+        
+            
 
             <section data-markdown>
                 <script type="text/template">
