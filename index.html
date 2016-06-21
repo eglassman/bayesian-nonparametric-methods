@@ -288,16 +288,16 @@
 
             <section data-markdown>
                 <script type="text/template">
-                    ####Open Questions:
+                    <!-- ####Open Questions: -->
 
-                    - How do we represent solutions in order to apply mixture modeling?
+                    1. Choose a solution representation
 
-                    - Which mixture models are most appropriate for this challenge?
+                    2. Choose an appropriate mixture models
 
                 </script>
             </section>
 
-            <section data-markdown>
+            <!-- <section data-markdown>
                 <script type="text/template">
                     ####Solution Representation Choices
 
@@ -312,7 +312,7 @@
                         - semantics
 
                 </script>
-            </section>
+            </section> -->
 
             <section data-markdown>
                 <script type="text/template">
@@ -336,14 +336,14 @@
 
                     <div class="container-fluid">
                       <div class="row-fluid">
-                        <div class="span6">
+                        <div class="col-sm-6">
                           <pre><code class="hljs">def iterPower(base, exp):
     if exp == 0:
       return int(1)
     else:
       return iterPower(base, exp -1) * base</code></pre>
                         </div>
-                        <div class="span6">
+                        <div class="col-sm-6">
                           - exp:  3, 2, 1, 0, 1, 2, 3
                           - base:  5
                         </div>
