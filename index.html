@@ -56,7 +56,7 @@
                 <script type="text/template">
                     Learning Latent Student Design Choices 
 
-                    in Introductory Python Programming Classes
+                    in Large Introductory Python Programming Classes
 
 <pre><code class="hljs">def number_of_vowels(input_string):
    # Your code here
@@ -67,6 +67,17 @@
                     #### MIT CSAIL
                 </script>
             </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- todo: Why? -->
+                    ####Programming is becoming a general requirement
+
+                    - Hundreds and thousands of students enroll in a single class
+                    <!-- - Many take just 1 introductory class -->
+                    - Learn to write readable, correct code
+                        <!-- - Apply that knowledge in other domains -->
+                </script>
                 
             <section data-markdown>
                 <script type="text/template">
@@ -122,11 +133,11 @@
                     <!-- (teacher test suite) -->
 
                     - Example problems:
-                        - count the vowels in a string
-                        - compute the derivative of a polynomial
+                        - count vowels in a string
+                        - compute a derivative
 
                     - Performance on test suite is automatic but noisy.
-                        - MIT CS intro Python course grades by hand.
+                        <!-- - MIT CS intro Python course grades by hand. -->
 
                 </script>
             </section>
@@ -157,13 +168,13 @@
                 <script type="text/template">
                     #### choices are buried in volume
 
-                    - (Many) teachers do not enjoy looking at hundreds of solutions. 
-                    - Teachers cannot look at thousands of solutions.
+                    - Teachers can & do hand-review hundreds of solutions.
+                    - Teachers cannot review thousands of solutions.
                     
                 </script>
             </section>
 
-            <section data-markdown>
+            <!-- <section data-markdown>
                 <script type="text/template">
                     #### Unsupervised Clustering
 
@@ -182,6 +193,29 @@
                         - Ignore or hide what we do not care about
                         - Sensitive to what we care about
                         
+                </script>
+            </section> -->
+
+            <section data-markdown>
+                <script type="text/template">
+                    <!-- ## Problem -->
+
+                    #### OverCode (Glassman et al. TOCHI '15)
+
+                    - Solutions are 
+                        - canonicalized
+                        - clustered
+                    - User interface displays canonicalized cluster representatives
+
+                    <!-- rendered in an interface for review by teachers -->
+
+                    <!-- Passes solutions through an analysis pipeline
+                        - canonicalizes -->
+                    <!-- - What it does -->
+                    <!-- todo: call it unsupervised clusterin -->
+
+                    <!-- - Has a notion of similarity -->
+                    
                 </script>
             </section>
 
@@ -219,12 +253,13 @@
                 <script type="text/template">
                     ####OverCode Results
 
-                    - hides variation in naming, comments, and whitespace
-                    - produces a reduced set of canonicalized solutions
+                    <!-- - hides variation in naming, comments, and whitespace -->
+                    <!-- - produces a reduced set of canonicalized solutions -->
 
-                    - In user studies, teachers (24)
-                        - more quickly develop a high-level view of students’ understanding and misconceptions
-                        - provide feedback that is relevant to more students
+                    - Teachers
+                        - more quickly develop a high-level view 
+                        <!-- of students’ understanding and misconceptions -->
+                        - provide feedback relevant to more students
                     - compared to the status quo
 
                 </script>
@@ -241,13 +276,13 @@
                     <!-- - Exponential growth of clusters based on both syntactic and semantic variability -->
 
                     - *X* common ways to initialize 'result'
-                        - result = 1.0 | 1
+                        - <pre><code class="hljs">result = 1.0 | 1</code></pre>
                     - *Y* ways to update 'result'
-                        - result *= base
-                        - result = result * base
+                        - <pre><code class="hljs">result *= base</code></pre>
+                        - <pre><code class="hljs">result = result * base</code></pre>
                     - *Z* ways to iterate over input
-                        - for i in ...
-                        - while i < ...
+                        - <pre><code class="hljs">for i in ...</code></pre>
+                        - <pre><code class="hljs">while i < ...</code></pre>
 
                     ...
 
@@ -260,7 +295,7 @@
                 <script type="text/template">
                     <!-- ####Open Questions: -->
 
-                    ####Option 1: Cluster OverCode's Canonizalized Solutions
+                    ####Option 1: Cluster OverCode's Canonizalized Cluster Representatives
 
                     - Solution representation
                         - Tokens present in solution
@@ -271,25 +306,34 @@
                 </script>
             </section>
 
-            <section data-markdown>
-                <!-- <script type="text/template"> -->
+            <section>
+                Bayesian Case Model (Kim et al.)
+                <!-- <div class="stretch"> -->
+                
+                <iframe src="https://www.youtube.com/embed/8PwHigCDdW8" width= '100%' height='600'></iframe>
+
+            </section>  
+
+            <!-- <section data-markdown>
+                <script type="text/template">
 
                 Bayesian Case Model (Kim et al.)
 
                 <iframe src="https://www.youtube.com/embed/8PwHigCDdW8" width='100%' height='600'></iframe>
 
-                <!-- </script> -->
-            </section>
+                </script>
+            </section> -->
 
             <section data-markdown>
                 <script type="text/template">
                     
+                ####Inter-grader reliability is low
 
-                    - When graded or clustered by hand, inter-teacher agreement can be low.
+                - When graded or clustered by hand, inter-grader agreement can be low.
 
-                    - Why?
+                - Why?
 
-                        - Assume: solutions are a *mixture* of design choices and teachers have different internal weights on what matters.
+                    - Assume: solutions are a *mixture* of design choices and graders have different internal weights on what matters.
 
                 </script>
             </section>
@@ -527,6 +571,104 @@
                 </script>
             </section>
 
+            
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####LDA Results
+
+                    <!-- todo  -->
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Discussion
+
+                    <!-- todo: reduce text -->
+                    - Top-down clustering may be the wrong approach.
+                        <!-- - Even with interpretable clustering methods, heterogenuous clusters leads to user distrust -->
+                    - Mixture models is promising method. 
+                        <!-- - Future models could account for syntactic choices as well. -->
+                    - Parameters have non-trivial consequences.
+                        <!-- - May need to be a knob users turn themselves, with UI support -->
+                    
+                    
+                </script>
+            </section>
+
+            <!-- <section data-markdown>
+                <script type="text/template">
+                    ####Discussion
+
+                    1. LDA is not the most appropriate model. 
+                    2. Future models could account for syntactic choices as well.
+                    
+                </script>
+            </section> -->
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Future Models
+
+                    todo: remove 2 liners
+
+                    - Some design choices are not independent.
+                        - Correlated Topic Model
+
+                    - Each new solution introduce novel design decisions.
+                        - Hierarchical Dirichlet Process
+
+                    - Variable signatures belong to multiple design decisions.
+                        - Indian Buffett Process
+
+
+                    <aside class="notes">
+                    TF-IDF and pLSA/pLSI were not considered.
+                        - Reveal little inter- or intra-solution statistical structure
+                    </aside>
+
+                </script>
+            </section>
+
+            
+            
+
+            <!-- <section data-markdown>
+                <script type="text/template">
+                    #### Dataset
+
+                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
+...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
+                </script>
+            </section> -->
+        
+            
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Future Work
+
+                    1. Add LDA-based inspection of solution clusters to OverCode interface
+                        - with human-friendly support for adjusting parameters
+
+                    2. Teachers provide feedback on "topics" instead of solutions, to be propagated back to students.
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    ####Thanks
+
+                    - Tamara Broderick & Finale Doshi-Velez
+                    - Rishabh Singh
+                    - Rob Miller
+                    
+                </script>
+            </section>
+
             <section data-markdown>
                 <script type="text/template">
                     #### LDA set to 100 "topics"
@@ -608,6 +750,7 @@
                 </script>
             </section>
 
+
             <section data-markdown>
                 <script type="text/template">
                     #### LDA set to 25 "topics"
@@ -633,99 +776,6 @@
                     <aside class="notes">
                         These two groups of solutions above containing some different popular topics correctly tease apart the difference between using the input argument \texttt{exp} as a counter and creating a separate variable as a counter, so as not to modify function inputs. This can be considered a superior software development choice.
                     </aside>
-                    
-                </script>
-            </section>
-
-            <!-- <section data-markdown>
-                <script type="text/template">
-                    ####Discussion
-
-                    - BCM is a powerful method, but without knowing the "true" number of clusters, 
-                    
-                </script>
-            </section> -->
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Discussion
-
-                    - Top-down clustering of Python solutions may be the wrong approach
-                        - Even with interpretable clustering methods, heterogenuous clusters leads to user distrust
-                    - Mixture models is promising method for factoring solutions into design choices. 
-                        - Future models could account for syntactic choices as well.
-                    - Parameters have non-trivial consequences
-                        - May need to be a knob users turn themselves, with UI support
-                    
-                    
-                </script>
-            </section>
-
-            <!-- <section data-markdown>
-                <script type="text/template">
-                    ####Discussion
-
-                    1. LDA is not the most appropriate model. 
-                    2. Future models could account for syntactic choices as well.
-                    
-                </script>
-            </section> -->
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Future Models
-
-                    - Some design choices are not independent.
-                    > Correlated Topic Model
-
-                    - Each new solution could introduce a novel design decision. 
-                    > Hierarchical Dirichlet Process
-
-                    - Variable signatures can belong to multiple design decisions.
-                    > Indian Buffett Process
-
-
-                    <aside class="notes">
-                    TF-IDF and pLSA/pLSI were not considered.
-                        - Reveal little inter- or intra-solution statistical structure
-                    </aside>
-
-                </script>
-            </section>
-
-            
-            
-
-            <!-- <section data-markdown>
-                <script type="text/template">
-                    #### Dataset
-
-                    - 3875 student-written definitions of <pre><code class="hljs">iterPower(base,exp):
-...</code></pre> collected from MIT's introductory Python programming edX course (6.00x)
-                </script>
-            </section> -->
-        
-            
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Future Work
-
-                    1. Add LDA-based inspection of solution clusters to OverCode interface
-                        - with human-friendly support for adjusting parameters
-
-                    2. Teachers provide feedback on "topics" instead of solutions, to be propagated back to students.
-                    
-                </script>
-            </section>
-
-            <section data-markdown>
-                <script type="text/template">
-                    ####Thanks
-
-                    - Tamara Broderick & Finale Doshi-Velez
-                    - Rishabh Singh
-                    - Rob Miller
                     
                 </script>
             </section>
