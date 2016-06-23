@@ -267,8 +267,8 @@
             </section>
 
             <section data-markdown>
-                <script type="text/template">
-                    ####Long Tail
+                <!-- <script type="text/template"> -->
+                    <h4>Long Tail</h4>
 
 
 
@@ -276,17 +276,28 @@
 
                     <!-- - Exponential growth of clusters based on both syntactic and semantic variability -->
 
-                    - *X* common ways to initialize 'result'
-                        - <pre><code class="hljs">result = 1.0 | 1</code></pre>
-                    - *Y* ways to update 'result'
-                        - <pre><code class="hljs">result *= base | result = result * base</code></pre>
-                        <!-- - <pre><code class="hljs"></code></pre> -->
-                    - *Z* ways to iterate over input
-                        - <pre><code class="hljs">for i in ... | while i > ...</code></pre>
-                        <!-- - <pre><code class="hljs">while i < ...</code></pre> -->
-                    - *X* x *Y* x *Z* x ... = many distinct clusters
+                    <div class="container-fluid">
+                      <div class="row-fluid">
+                        <div class="col-sm-6">
+                            <pre><code class="hljs">result = 1</code></pre></div>
+                        <div class="col-sm-6">
+                            <pre><code class="hljs">result = 1.0</code></pre></div>
+                      </div>
+                      <div class="row-fluid">
+                        <div class="col-sm-6">
+                            <pre><code class="hljs">result *= base</code></pre></div>
+                        <div class="col-sm-6">
+                            <pre><code class="hljs">result = result * base</code></pre></div>
+                      </div>
+                      <div class="row-fluid">
+                        <div class="col-sm-6">
+                            <pre><code class="hljs">for i in range(inputArray):</code></pre></div>
+                        <div class="col-sm-6">
+                            <pre><code class="hljs">while i <= len(inputArray) </code></pre></div>
+                      </div>
+                    </div>
 
-                </script>
+                <!-- </script> -->
             </section>
 
               <section data-markdown>
