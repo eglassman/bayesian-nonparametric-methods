@@ -610,9 +610,10 @@ res: 1, 5, 25</code></pre></div>
 
             <section data-markdown>
                 <script type="text/template">
-                    #### Apply LDA to solutions
+                    #### Apply LDA to OverCode Clusters
 
-                    1. Collect 3875 solutions for iterPower collected from one programming problem from intro Python edX course
+                    1. Collect 3875 iterPower solutions
+                    <!-- collected from one programming problem from intro Python edX course -->
 
                     2. Run OverCode analysis pipeline
                         - produced 977 solution clusters 
@@ -620,8 +621,11 @@ res: 1, 5, 25</code></pre></div>
                     
                     2. Compose variable-signature-by-cluster matrix
                     
-                    3. Run LDA to infer mixture of design choices in each solution
-                        - Set to find an arbitrary number of "topics"
+                    3. Run LDA on matrix
+                    <!-- infer mixture of design choices in each solution -->
+                        <!-- - Set to find an arbitrary number of "topics" -->
+
+                    4. Inspect reulst
                     
                 </script>
             </section>
@@ -633,6 +637,67 @@ res: 1, 5, 25</code></pre></div>
                     ####LDA Results
 
                     <!-- todo  -->
+                    <!-- - Different pre-set numbers of topics affected topic mixtures -->
+                    - Cluster representatives with similar semantics shared the same topic
+                        - Regardless of pre-set number of topics
+                        <!-- - differentiated between common and les -->
+                    
+                </script>
+            </section>
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### Examplars of topic 1 
+
+                    <!-- (LDA set to 25 "topics") -->
+
+                    <!-- Solutions containing four different popular topics: -->
+
+                    <pre><code class="hljs">def iterPower(base, exp):
+    result = 1
+    while exp > 0:
+       result = result * base
+       exp = exp - 1
+    return result</code></pre>
+
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    while exp>0:
+        result*=base
+        exp-=1
+    return result</code></pre>
+
+                    <aside class="notes">
+                        These two deduplicated solutions are examples of the many solutions associated with all the first four most popular topics. Popularity, in this case, was determined by whether the topic was associated with at least $500$ deduplicated solutions. The first two of the popular topics overlap to the point that they are assigned to the same deduplicated solutions $578$ times; they are not assigned to the same deduplicated solution only $101$ times.
+                    </aside>
+                    
+                </script>
+            </section>
+
+
+            <section data-markdown>
+                <script type="text/template">
+                    #### Examplars of topic 2
+
+                    <pre><code class="hljs">def iterPower(base,exp):
+    result=1
+    i=0
+    while i < exp:
+        result*=base
+        i+=1
+    return result</code></pre>
+                    <pre><code class="hljs">def iterPower(base,exp):
+    if exp==0:
+        return 1.0
+    b=exp
+    result=base
+    while b>1:
+        result*=base
+        b-=1
+    return result</code></pre>
+                    <aside class="notes">
+                        These two groups of solutions above containing some different popular topics correctly tease apart the difference between using the input argument \texttt{exp} as a counter and creating a separate variable as a counter, so as not to modify function inputs. This can be considered a superior software development choice.
+                    </aside>
                     
                 </script>
             </section>
@@ -644,7 +709,7 @@ res: 1, 5, 25</code></pre></div>
                     <!-- todo: reduce text -->
                     - Top-down clustering may be the wrong approach.
                         <!-- - Even with interpretable clustering methods, heterogenuous clusters leads to user distrust -->
-                    - Mixture models is promising method. 
+                    - Mixture models are promising method. 
                         <!-- - Future models could account for syntactic choices as well. -->
                     - Parameters have non-trivial consequences.
                         <!-- - May need to be a knob users turn themselves, with UI support -->
@@ -667,7 +732,7 @@ res: 1, 5, 25</code></pre></div>
                 <script type="text/template">
                     ####Future Models
 
-                    todo: remove 2 liners
+                    <!-- todo: remove 2 liners -->
 
                     - Some design choices are not independent.
                         - Correlated Topic Model
