@@ -430,11 +430,16 @@
 
                     <div class="container-fluid">
                   <div class="row-fluid">
-                    <div class="col-sm-12">Initilization Choices</div>
+                    <div class="col-sm-12">Recursive</div>
                     <div class="col-sm-6">
-                        <pre><code class="hljs">result = 1</code></pre></div>
+                        <pre><code class="hljs">def iterPower(base, exp):
+    if exp == 0:
+      return int(1)
+    else:
+      return iterPower(base, exp -1) * base</code></pre></div>
                     <div class="col-sm-6">
-                        <pre><code class="hljs">result = 1.0</code></pre></div>
+                        <pre><code class="hljs">exp:  3, 2, 1, 0, 1, 2, 3<br>
+                          base:  5</code></pre></div>
                   </div>
 
                   <div class="row-fluid">
